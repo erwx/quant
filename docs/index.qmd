@@ -1,0 +1,15 @@
+---
+title: ""
+---
+
+### Labs
+
+[Lab #1](lab_one.html)
+
+[Lab #2](lab_two.html)
+
+### Resources
+
+[Textbook](colardarcicobb4th.pdf)
+
+[The Book of R](bookofr.pdf)

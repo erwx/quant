@@ -1,0 +1,16 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "EDUC 8230"
+  description: "An Introduction to Quantitative Methods in Education Research"
+  site-url: "https://erwx.github.io/quant/"
+
+  navbar:
+    background: primary
+    title: "Quant I"
+
+format:
+  html:
+    theme: solar
