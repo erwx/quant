@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Erik Whitfield">
-<meta name="dcterms.date" content="2025-08-30">
+<meta name="dcterms.date" content="2025-08-31">
 
-<title>Lab #2</title>
+<title>Lab 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -2182,7 +2182,10 @@ vertical-align: -.125em;
   <ul>
   <li><a href="#exploring-data-through-frequencies" id="toc-exploring-data-through-frequencies" class="nav-link active" data-scroll-target="#exploring-data-through-frequencies">Exploring Data Through Frequencies</a>
   <ul class="collapse">
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#built-in-datasets-in-r" id="toc-built-in-datasets-in-r" class="nav-link" data-scroll-target="#built-in-datasets-in-r">Built-in Datasets in R</a></li>
+  </ul></li>
   <li><a href="#frequency-tables" id="toc-frequency-tables" class="nav-link" data-scroll-target="#frequency-tables">Frequency Tables</a>
   <ul class="collapse">
   <li><a href="#basic-frequency-tables" id="toc-basic-frequency-tables" class="nav-link" data-scroll-target="#basic-frequency-tables">Basic Frequency Tables</a></li>
@@ -2192,7 +2195,6 @@ vertical-align: -.125em;
   <li><a href="#bar-plots" id="toc-bar-plots" class="nav-link" data-scroll-target="#bar-plots">Bar Plots</a>
   <ul class="collapse">
   <li><a href="#basic-bar-plots" id="toc-basic-bar-plots" class="nav-link" data-scroll-target="#basic-bar-plots">Basic Bar Plots</a></li>
-  <li><a href="#customizing-bar-plots" id="toc-customizing-bar-plots" class="nav-link" data-scroll-target="#customizing-bar-plots">Customizing Bar Plots</a></li>
   <li><a href="#horizontal-bar-plots" id="toc-horizontal-bar-plots" class="nav-link" data-scroll-target="#horizontal-bar-plots">Horizontal Bar Plots</a></li>
   </ul></li>
   <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms">Histograms</a>
@@ -2205,17 +2207,12 @@ vertical-align: -.125em;
   <li><a href="#advanced-techniques" id="toc-advanced-techniques" class="nav-link" data-scroll-target="#advanced-techniques">Advanced Techniques</a>
   <ul class="collapse">
   <li><a href="#creating-frequency-tables-for-continuous-data" id="toc-creating-frequency-tables-for-continuous-data" class="nav-link" data-scroll-target="#creating-frequency-tables-for-continuous-data">Creating Frequency Tables for Continuous Data</a></li>
-  <li><a href="#comprehensive-frequency-analysis" id="toc-comprehensive-frequency-analysis" class="nav-link" data-scroll-target="#comprehensive-frequency-analysis">Comprehensive Frequency Analysis</a></li>
-  <li><a href="#saving-frequency-information" id="toc-saving-frequency-information" class="nav-link" data-scroll-target="#saving-frequency-information">Saving Frequency Information</a></li>
+  <li><a href="#frequency-analysis" id="toc-frequency-analysis" class="nav-link" data-scroll-target="#frequency-analysis">Frequency Analysis</a></li>
+  <li><a href="#extracting-information-from-histograms" id="toc-extracting-information-from-histograms" class="nav-link" data-scroll-target="#extracting-information-from-histograms">Extracting Information from Histograms</a></li>
   </ul></li>
-  <li><a href="#practical-applications" id="toc-practical-applications" class="nav-link" data-scroll-target="#practical-applications">Practical Applications</a>
-  <ul class="collapse">
-  <li><a href="#quality-control-example" id="toc-quality-control-example" class="nav-link" data-scroll-target="#quality-control-example">Quality Control Example</a></li>
-  <li><a href="#creating-publication-ready-tables" id="toc-creating-publication-ready-tables" class="nav-link" data-scroll-target="#creating-publication-ready-tables">Creating Publication-Ready Tables</a></li>
-  </ul></li>
-  <li><a href="#exercise-problems" id="toc-exercise-problems" class="nav-link" data-scroll-target="#exercise-problems">Exercise Problems</a></li>
+  <li><a href="#practical-applications" id="toc-practical-applications" class="nav-link" data-scroll-target="#practical-applications">Practical Applications</a></li>
+  <li><a href="#practice-problems" id="toc-practice-problems" class="nav-link" data-scroll-target="#practice-problems">Practice Problems</a></li>
   <li><a href="#key-points-to-remember" id="toc-key-points-to-remember" class="nav-link" data-scroll-target="#key-points-to-remember">Key Points to Remember</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -2224,7 +2221,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab #2</h1>
+<h1 class="title">Lab 2</h1>
 </div>
 
 
@@ -2241,7 +2238,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 30, 2025</p>
+      <p class="date">August 31, 2025</p>
     </div>
   </div>
   
@@ -2257,12 +2254,21 @@ vertical-align: -.125em;
 <h1>Exploring Data Through Frequencies</h1>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Understanding the distribution of data is fundamental to statistical analysis. In this lab, we want to learn how to create frequency tables, calculate cumulative frequencies, and visualize distributions using bar plots and histograms. We’ll work with the built-in <code>mtcars</code> dataset, which contains information about 32 automobiles from a 1974 Motor Trend magazine.</p>
+<p>Understanding the distribution of data is fundamental to statistical analysis. For this lab, we’ll create frequency tables, calculate cumulative frequencies, and visualize distributions using bar plots and histograms using basic R functions.</p>
+<section id="built-in-datasets-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="built-in-datasets-in-r">Built-in Datasets in R</h3>
+<p>R comes with many built-in datasets that are great for learning and practicing data analysis techniques. These datasets are immediately available without needing to load external files. Try the running the code below on your computer.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># See all available built-in datasets</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datasets)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We’ll use the <code>mtcars</code> dataset, which contains information about 32 automobiles from a 1974 Motor Trend magazine. This dataset is popular in R tutorials and instructional materials because it’s relatively small, easy to understand, and contains both categorical and continuous variables.</p>
 <p>Let’s begin by examining our dataset:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load and examine the mtcars dataset</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load and examine the mtcars dataset</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
 Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
@@ -2272,7 +2278,7 @@ Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
 Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&#39;data.frame&#39;:   32 obs. of  11 variables:
  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
@@ -2288,66 +2294,73 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
 </div>
 </div>
+<p>The <code>mtcars</code> dataset contains 32 observations (cars) and 11 variables including miles per gallon (mpg), number of cylinders (cyl), horsepower (hp), and transmission type (am, where 0=automatic and 1=manual).</p>
+</section>
 </section>
 <section id="frequency-tables" class="level2">
 <h2 class="anchored" data-anchor-id="frequency-tables">Frequency Tables</h2>
 <section id="basic-frequency-tables" class="level3">
 <h3 class="anchored" data-anchor-id="basic-frequency-tables">Basic Frequency Tables</h3>
-<p>The <code>table()</code> function is your primary tool for creating frequency tables in R. It counts the occurrences of each unique value in a vector.</p>
+<p>A frequency table shows how often each unique value appears in your data. This is especially useful for categorical variables (like the number of cylinders in a car engine) or discrete numeric variables. The <code>table()</code> function is your primary tool for creating frequency tables in R.</p>
+<p>Let’s create a frequency table for the number of cylinders in our cars:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a frequency table for number of cylinders</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>cyl_freq <span class="ot">&lt;-</span> <span class="fu">table</span>(mtcars<span class="sc">$</span>cyl)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>cyl_freq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a frequency table for number of cylinders</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>cyl_freq <span class="ot">&lt;-</span> <span class="fu">table</span>(mtcars<span class="sc">$</span>cyl)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>cyl_freq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  4  6  8 
 11  7 14 </code></pre>
 </div>
 </div>
+<p>This output tells us that 11 cars have 4 cylinders, 7 cars have 6 cylinders, and 14 cars have 8 cylinders. The <code>table()</code> function automatically counts each unique value and presents the results.</p>
 </section>
 <section id="frequency-tables-with-proportions" class="level3">
 <h3 class="anchored" data-anchor-id="frequency-tables-with-proportions">Frequency Tables with Proportions</h3>
-<p>To convert frequencies to proportions (relative frequencies), use the <code>prop.table()</code> function:</p>
+<p>While raw frequencies tell us how many observations fall into each category, proportions (also called relative frequencies) tell us what proportion of the total each category represents.</p>
+<p>To convert frequencies to proportions, use the <code>prop.table()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate proportions</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>cyl_prop <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(cyl_freq)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>cyl_prop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate proportions</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>cyl_prop <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(cyl_freq)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>cyl_prop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
       4       6       8 
 0.34375 0.21875 0.43750 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to percentages</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cyl_percent <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(cyl_freq) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>cyl_percent</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to percentages (multiply by 100)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>cyl_percent <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(cyl_freq) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>cyl_percent</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      4      6      8 
 34.375 21.875 43.750 </code></pre>
 </div>
 </div>
+<p>Now we can see that approximately 34% of cars have 4 cylinders, 22% have 6 cylinders, and 44% have 8 cylinders. Percentages are sometimes easier to interpret and communicate to others than raw proportions.</p>
 </section>
 <section id="cumulative-frequencies" class="level3">
 <h3 class="anchored" data-anchor-id="cumulative-frequencies">Cumulative Frequencies</h3>
-<p>Cumulative frequencies show the running total of frequencies up to each category. Use the <code>cumsum()</code> function:</p>
+<p>Cumulative frequencies show the running total of frequencies up to and including each category. They answer questions like “How many cars have 6 cylinders or fewer?” This is useful when your categories have a natural ordering (like our cylinder counts: 4, 6, 8).</p>
+<p>Use the <code>cumsum()</code> function to calculate cumulative frequencies:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate cumulative frequencies</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>cyl_cumfreq <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(cyl_freq)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>cyl_cumfreq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate cumulative frequencies</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>cyl_cumfreq <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(cyl_freq)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>cyl_cumfreq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> 4  6  8 
 11 18 32 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a comprehensive frequency table</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>freq_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Cylinders       =</span> <span class="fu">names</span>(cyl_freq),</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Frequency       =</span> <span class="fu">as.numeric</span>(cyl_freq),</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Proportion      =</span> <span class="fu">as.numeric</span>(cyl_prop),</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Percentage      =</span> <span class="fu">as.numeric</span>(cyl_percent),</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Cumulative_Freq =</span> <span class="fu">as.numeric</span>(cyl_cumfreq),</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Cumulative_Prop =</span> <span class="fu">cumsum</span>(<span class="fu">as.numeric</span>(cyl_prop))</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>freq_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a comprehensive frequency table combining all our calculations</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>freq_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Cylinders =</span> <span class="fu">names</span>(cyl_freq),</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Frequency =</span> <span class="fu">as.numeric</span>(cyl_freq),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Proportion =</span> <span class="fu">as.numeric</span>(cyl_prop),</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Percentage =</span> <span class="fu">as.numeric</span>(cyl_percent),</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Cumulative_Freq =</span> <span class="fu">as.numeric</span>(cyl_cumfreq),</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Cumulative_Prop =</span> <span class="fu">cumsum</span>(<span class="fu">as.numeric</span>(cyl_prop))</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>freq_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Cylinders Frequency Proportion Percentage Cumulative_Freq Cumulative_Prop
 1         4        11    0.34375     34.375              11         0.34375
@@ -2355,23 +2368,25 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 3         8        14    0.43750     43.750              32         1.00000</code></pre>
 </div>
 </div>
+<p>Looking at our cumulative frequencies, we can see that 18 cars (11 + 7) have 6 cylinders or fewer, and all 32 cars have 8 cylinders or fewer (which makes sense since 8 is the maximum in our dataset).</p>
 </section>
 </section>
 <section id="bar-plots" class="level2">
 <h2 class="anchored" data-anchor-id="bar-plots">Bar Plots</h2>
 <section id="basic-bar-plots" class="level3">
 <h3 class="anchored" data-anchor-id="basic-bar-plots">Basic Bar Plots</h3>
-<p>The <code>barplot()</code> function creates bar charts from frequency tables or vectors:</p>
+<p>Bar plots (also called bar charts) are a common way to visualize categorical data. Each bar’s height represents the frequency (count) of that category. The <code>barplot()</code> function in base R creates bar charts from frequency tables or vectors.</p>
+<p>Let’s create a basic bar plot of our cylinder frequencies:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic bar plot of cylinder frequencies</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  cyl_freq,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">main   =</span> <span class="st">&quot;Frequency of Cylinder Counts&quot;</span>,</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab   =</span> <span class="st">&quot;Number of Cylinders&quot;</span>,</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab   =</span> <span class="st">&quot;Frequency&quot;</span>,</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">col    =</span> <span class="st">&quot;lightblue&quot;</span>,</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="st">&quot;black&quot;</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic bar plot of cylinder frequencies</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  cyl_freq,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Frequency of Cylinder Counts&quot;</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Number of Cylinders&quot;</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="st">&quot;black&quot;</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2380,52 +2395,22 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 </div>
 </div>
 </div>
-</section>
-<section id="customizing-bar-plots" class="level3">
-<h3 class="anchored" data-anchor-id="customizing-bar-plots">Customizing Bar Plots</h3>
-<p>You can enhance your bar plots with various arguments:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Enhanced bar plot</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  cyl_freq,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">main     =</span> <span class="st">&quot;Distribution of Engine Cylinders in Motor Trend Cars&quot;</span>,</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab     =</span> <span class="st">&quot;Number of Cylinders&quot;</span>,</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab     =</span> <span class="st">&quot;Count&quot;</span>,</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">col      =</span> <span class="fu">c</span>(<span class="st">&quot;coral&quot;</span>, <span class="st">&quot;lightgreen&quot;</span>, <span class="st">&quot;skyblue&quot;</span>),</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">border   =</span> <span class="st">&quot;darkgray&quot;</span>,</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim     =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(cyl_freq) <span class="sc">+</span> <span class="dv">2</span>),</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.main =</span> <span class="fl">1.2</span>,</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">cex.lab  =</span> <span class="fl">1.1</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Add value labels on top of bars</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">seq_along</span>(cyl_freq),</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> cyl_freq <span class="sc">+</span> <span class="fl">0.5</span>,</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> cyl_freq,</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">pos =</span> <span class="dv">3</span></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img role="img" src="data:image/png;base64,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8AAAAJAAAh4AAAASQMADAABAAgh4AAAASAABDwAAAAkg4AEAACABBDwAAAAkgIAHAACABBDwAAAAkAACHgAAABJAwAMAAEACCHgAAABIAAEPAAAACSDgAQAAIAEEPAAAACSAgAcAAIAEEPAAAACQAAIeAAAAEkDAAwAAQAIIeAAAAEgAAQ8AAAAJIOABAAAgAQQ8AAAAJICABwAAgAQQ8AAAAJAAAh4AAAASQMADAABAAgh4AAAASAABDwAAAAkg4AEAACABBDwAAAAkgIAHAACABBDwAAAAkAACHgAAABJAwAMAAEACCHgAAABIAAEPAAAACSDgAQAAIAEEPAAAACSAgAcAAIAEEPAAAACQAAIeAAAAEkDAAwAAQAIIeAAAAEgAAQ8AAAAJIOABAAAgAQQ8AAAAJICABwAAgAQQ8AAAAJAAAh4AAAASQMADAABAAgh4AAAASAABDwAAAAkg4AEAACABBDwAAAAkgIAHAACABBDwAAAAkAACHgAAABJAwAMAAEACCHgAAABIAAEPAAAACSDgAQAAIAEEPAAAACSAgAcAAIAEEPAAAACQAAIeAAAAEkDAAwAAQAIIeAAAAEgAAQ8AAAAJIOABAAAgAQQ8AAAAJICABwAAgAQQ8AAAAJAAAh4AAAASQMADAABAAgh4AAAASAABDwAAAAkg4AEAACABBDwAAAAkgIAHAACABBDwAAAAkAACHgAAABJAwAMAAEACCHgAAABIAAEPAAAACSDgAQAAIAEEPAAAACSAgAcAAIAEEPAAAACQAAIeAAAAEkDAAwAAQAIIeAAAAEgAAQ8AAAAJIOABAAAgAQQ8AAAAJICABwAAgAQQ8AAAAJAAAh4AAAASQMADAABAAgh4AAAASAABDwAAAAkg4AEAACABBDwAAAAkgIAHAACABBDwAAAAkAACHgAAABJAwAMAAEACCHgAAABIAAEPAAAACSDgAQAAIAEEPAAAACSAgAcAAIAEEPAAAACQAAIeAAAAEkDAAwAAQAIIeAAAAEgAAQ8AAAAJIOABAAAgAQQ8AAAAJICABwAAgAQQ8AAAAJAAAh4AAAASQMADAABAAgh4AAAASAABDwAAAAkg4AEAACABBDwAAAAkgIAHAACABBDwAAAAkAACHgAAABJAwAMAAEACCHgAAABIAAEPAAAACSDgAQAAIAEEPAAAACSAgAcAAIAE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" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>The <code>main</code> argument adds a title, <code>xlab</code> and <code>ylab</code> add axis labels, <code>col</code> sets the bar color, and <code>border</code> sets the color of the bar outlines. Good labels make your plots much easier to understand.</p>
 </section>
 <section id="horizontal-bar-plots" class="level3">
 <h3 class="anchored" data-anchor-id="horizontal-bar-plots">Horizontal Bar Plots</h3>
-<p>Sometimes horizontal orientation improves readability:</p>
+<p>Sometimes horizontal bar plots are easier to read, especially when category names are long. You can create these by adding the <code>horiz = TRUE</code> argument:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Horizontal bar plot</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(cyl_freq,</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Cylinder Distribution&quot;</span>,</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Frequency&quot;</span>,</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Number of Cylinders&quot;</span>,</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">&quot;orange&quot;</span>,</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">horiz =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">las =</span> <span class="dv">1</span>)  <span class="co"># las=1 makes y-axis labels horizontal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  cyl_freq,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Cylinder Distribution&quot;</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Frequency&quot;</span>,        <span class="co"># Note: x and y labels are swapped</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;Number of Cylinders&quot;</span>,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">&quot;orange&quot;</span>,</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">horiz =</span> <span class="cn">TRUE</span>,             <span class="co"># Make bars horizontal</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">las =</span> <span class="dv">1</span>                   <span class="co"># las=1 makes y-axis labels horizontal</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>)                  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2434,13 +2419,15 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 </div>
 </div>
 </div>
+<p>Notice how we swapped the x and y axis labels since the orientation changed. The <code>las</code> argument controls the orientation of axis labels.</p>
 </section>
 </section>
 <section id="histograms" class="level2">
 <h2 class="anchored" data-anchor-id="histograms">Histograms</h2>
 <section id="basic-histograms" class="level3">
 <h3 class="anchored" data-anchor-id="basic-histograms">Basic Histograms</h3>
-<p>Histograms display the distribution of continuous variables by grouping values into bins. The <code>hist()</code> function is your tool of choice:</p>
+<p>While bar plots work great for categorical data, histograms are designed for continuous numeric data. A histogram divides the range of values into intervals (called “bins”) and shows how many observations fall into each bin. This gives you a picture of the data’s distribution.</p>
+<p>The <code>hist()</code> function creates histograms in R:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic histogram of miles per gallon</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
@@ -2459,15 +2446,16 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 </div>
 </div>
 </div>
+<p>This histogram shows us the distribution of fuel efficiency in our car dataset. Most cars get between 15-25 mpg, with a few very fuel-efficient cars getting over 30 mpg.</p>
 </section>
 <section id="controlling-bin-width-and-number" class="level3">
 <h3 class="anchored" data-anchor-id="controlling-bin-width-and-number">Controlling Bin Width and Number</h3>
-<p>You can control the histogram appearance using the <code>breaks</code> argument:</p>
+<p>One of the most important decisions when creating a histogram is how many bins to use. Too few bins and you lose detail; too many bins and the pattern becomes hard to see. R chooses a reasonable default, but you can control this with the <code>breaks</code> argument:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram with specific number of bins</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  mtcars<span class="sc">$</span>mpg,</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> <span class="dv">8</span>,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> <span class="dv">8</span>, <span class="co"># Use exactly 8 bins</span></span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;MPG Distribution (8 bins)&quot;</span>,</span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Miles Per Gallon&quot;</span>,</span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>,</span>
@@ -2484,7 +2472,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram with specific break points</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  mtcars<span class="sc">$</span>mpg,</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>),</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>),  <span class="co"># Specify exact bin boundaries</span></span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;MPG Distribution (Custom bins)&quot;</span>,</span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Miles Per Gallon&quot;</span>,</span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>,</span>
@@ -2499,23 +2487,24 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 </div>
 </div>
 </div>
+<p>The first approach lets R choose where to place the bin boundaries, but uses your specified number of bins. The second approach gives you complete control over the bin boundaries, which is useful when you want bins of specific sizes or at meaningful breakpoints.</p>
 </section>
 <section id="density-histograms" class="level3">
 <h3 class="anchored" data-anchor-id="density-histograms">Density Histograms</h3>
-<p>Convert frequencies to densities for better comparison across datasets:</p>
+<p>Sometimes instead of showing raw counts, it’s useful to show the proportion of observations in each bin. This is especially helpful when comparing distributions from datasets of different sizes, or when you want to overlay a smooth density curve.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Density histogram</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  mtcars<span class="sc">$</span>mpg,</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq   =</span> <span class="cn">FALSE</span>,  <span class="co"># This creates a density histogram</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">main   =</span> <span class="st">&quot;MPG Density Distribution&quot;</span>,</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab   =</span> <span class="st">&quot;Miles Per Gallon&quot;</span>,</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab   =</span> <span class="st">&quot;Density&quot;</span>,</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">col    =</span> <span class="st">&quot;lightyellow&quot;</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="co"># This creates a density histogram instead of frequency</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;MPG Density Distribution&quot;</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Miles Per Gallon&quot;</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;Density&quot;</span>,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">&quot;lightyellow&quot;</span>,</span>
 <span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="st">&quot;orange&quot;</span></span>
 <span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a density curve</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a smooth density curve</span></span>
 <span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(mtcars<span class="sc">$</span>mpg), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
@@ -2525,33 +2514,38 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 </div>
 </div>
 </div>
+<p>The density curve (red line) shows a smooth estimate of the underlying distribution. The area under both the histogram bars and the density curve equals 1.0, representing the total probability.</p>
 </section>
 <section id="multiple-histograms-for-comparison" class="level3">
 <h3 class="anchored" data-anchor-id="multiple-histograms-for-comparison">Multiple Histograms for Comparison</h3>
-<p>You can create side-by-side histograms to compare distributions:</p>
+<p>Often you want to compare the distribution of a variable across different groups. One approach is to create side-by-side histograms. We’ll compare the fuel efficiency of automatic versus manual transmission cars:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up plotting area for multiple plots</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up plotting area for multiple plots side by side</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))  <span class="co"># 1 row, 2 columns</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram for automatic transmission cars</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>auto_mpg <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg[mtcars<span class="sc">$</span>am <span class="sc">==</span> <span class="dv">0</span>]</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(auto_mpg,</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;MPG: Automatic Transmission&quot;</span>,</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Miles Per Gallon&quot;</span>,</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>,</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>,</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">35</span>),</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">8</span>))</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram for manual transmission cars</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>manual_mpg <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg[mtcars<span class="sc">$</span>am <span class="sc">==</span> <span class="dv">1</span>]</span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(manual_mpg,</span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;MPG: Manual Transmission&quot;</span>,</span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Miles Per Gallon&quot;</span>,</span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>,</span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;lightcoral&quot;</span>,</span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">35</span>),</span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram for automatic transmission cars (am = 0)</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>auto_mpg <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg[mtcars<span class="sc">$</span>am <span class="sc">==</span> <span class="dv">0</span>]  <span class="co"># Extract mpg values for automatic cars</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  auto_mpg,</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;MPG: Automatic Transmission&quot;</span>,</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Miles Per Gallon&quot;</span>,</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>,</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>,</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">35</span>), <span class="co"># Same x-axis range for both plots</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">8</span>)    <span class="co"># Same y-axis range for both plots</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram for manual transmission cars (am = 1)</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>manual_mpg <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>mpg[mtcars<span class="sc">$</span>am <span class="sc">==</span> <span class="dv">1</span>]  <span class="co"># Extract mpg values for manual cars</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>  manual_mpg,</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;MPG: Manual Transmission&quot;</span>,</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Miles Per Gallon&quot;</span>,</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>,</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">&quot;lightcoral&quot;</span>,</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">35</span>), <span class="co"># Same x-axis range for both plots</span></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">8</span>)    <span class="co"># Same y-axis range for both plots</span></span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2559,26 +2553,29 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset plotting parameters</span></span>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset plotting parameters to default (single plot)</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Using the same axis ranges (<code>xlim</code> and <code>ylim</code>) makes it easier to compare the two distributions. From these histograms, we can see that manual transmission cars tend to have higher fuel efficiency than automatic transmission cars.</p>
 </section>
 </section>
 <section id="advanced-techniques" class="level2">
 <h2 class="anchored" data-anchor-id="advanced-techniques">Advanced Techniques</h2>
 <section id="creating-frequency-tables-for-continuous-data" class="level3">
 <h3 class="anchored" data-anchor-id="creating-frequency-tables-for-continuous-data">Creating Frequency Tables for Continuous Data</h3>
-<p>For continuous variables, you’ll need to create bins first:</p>
+<p>Sometimes you want to create a frequency table for continuous data, similar to what a histogram shows but in table form. To do this, you first need to group the continuous values into bins using the <code>cut()</code> function:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bins for miles per gallon</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>mpg_bins <span class="ot">&lt;-</span> <span class="fu">cut</span>(mtcars<span class="sc">$</span>mpg,</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>),</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;10-15&quot;</span>, <span class="st">&quot;15-20&quot;</span>, <span class="st">&quot;20-25&quot;</span>, <span class="st">&quot;25-30&quot;</span>, <span class="st">&quot;30-35&quot;</span>),</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">include.lowest =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create frequency table</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>mpg_freq <span class="ot">&lt;-</span> <span class="fu">table</span>(mpg_bins)</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>mpg_freq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>mpg_bins <span class="ot">&lt;-</span> <span class="fu">cut</span>(</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  mtcars<span class="sc">$</span>mpg,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>),                     </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;10-15&quot;</span>, <span class="st">&quot;15-20&quot;</span>, <span class="st">&quot;20-25&quot;</span>, <span class="st">&quot;25-30&quot;</span>, <span class="st">&quot;30-35&quot;</span>),</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">include.lowest =</span> <span class="cn">TRUE</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create frequency table from the binned data</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>mpg_freq <span class="ot">&lt;-</span> <span class="fu">table</span>(mpg_bins)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>mpg_freq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>mpg_bins
 10-15 15-20 20-25 25-30 30-35 
@@ -2592,10 +2589,11 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
     6    18    26    28    32 </code></pre>
 </div>
 </div>
+<p>The <code>cut()</code> function transforms continuous data into categorical data by assigning each value to a bin. This lets you apply all the frequency table techniques we learned earlier to continuous variables.</p>
 </section>
-<section id="comprehensive-frequency-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="comprehensive-frequency-analysis">Comprehensive Frequency Analysis</h3>
-<p>Let’s put it all together with a complete analysis:</p>
+<section id="frequency-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="frequency-analysis">Frequency Analysis</h3>
+<p>Let’s combine all our techniques to perform a complete frequency analysis. This demonstrates how to systematically examine a categorical variable:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Complete frequency analysis for cylinder data</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;=== FREQUENCY ANALYSIS: ENGINE CYLINDERS ===</span><span class="sc">\n\n</span><span class="st">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2620,7 +2618,7 @@ Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre
 Proportion Table:</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>prop <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(freq)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">round</span>(prop, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">round</span>(prop, <span class="dv">3</span>))  <span class="co"># Round to 3 decimal places for readability</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     4     6     8 
@@ -2632,7 +2630,7 @@ Proportion Table:</code></pre>
 Percentage Table:</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>percent <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(freq) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">round</span>(percent, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">round</span>(percent, <span class="dv">1</span>))  <span class="co"># Round to 1 decimal place</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    4    6    8 
@@ -2661,15 +2659,16 @@ Cumulative Proportions:</code></pre>
 0.344 0.562 1.000 </code></pre>
 </div>
 </div>
+<p>This helps you understand how the variable is distributed in your dataset.</p>
 </section>
-<section id="saving-frequency-information" class="level3">
-<h3 class="anchored" data-anchor-id="saving-frequency-information">Saving Frequency Information</h3>
-<p>You can extract histogram information for further analysis:</p>
+<section id="extracting-information-from-histograms" class="level3">
+<h3 class="anchored" data-anchor-id="extracting-information-from-histograms">Extracting Information from Histograms</h3>
+<p>When you create a histogram, R actually calculates a lot of information behind the scenes. You can access this information by storing the histogram in a variable (using <code>plot = FALSE</code> to prevent it from displaying):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Store histogram information</span></span>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Store histogram information without plotting</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>mpg_hist <span class="ot">&lt;-</span> <span class="fu">hist</span>(mtcars<span class="sc">$</span>mpg, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Examine the structure</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Examine the structure of the histogram object</span></span>
 <span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mpg_hist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>List of 6
@@ -2682,35 +2681,36 @@ Cumulative Proportions:</code></pre>
  - attr(*, &quot;class&quot;)= chr &quot;histogram&quot;</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access specific components</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Bin breaks:&quot;</span>, mpg_hist<span class="sc">$</span>breaks, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Bin breaks (boundaries):&quot;</span>, mpg_hist<span class="sc">$</span>breaks, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Bin breaks: 10 15 20 25 30 35 </code></pre>
+<pre><code>Bin breaks (boundaries): 10 15 20 25 30 35 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Bin counts:&quot;</span>, mpg_hist<span class="sc">$</span>counts, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Bin counts (frequencies):&quot;</span>, mpg_hist<span class="sc">$</span>counts, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Bin counts: 6 12 8 2 4 </code></pre>
+<pre><code>Bin counts (frequencies): 6 12 8 2 4 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Bin midpoints:&quot;</span>, mpg_hist<span class="sc">$</span>mids, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Bin midpoints: 12.5 17.5 22.5 27.5 32.5 </code></pre>
 </div>
 </div>
+<p>This information can be useful for further analysis or for creating custom visualizations. The <code>breaks</code> show where each bin starts and ends, <code>counts</code> show how many observations are in each bin (the bar heights), and <code>mids</code> show the center point of each bin.</p>
 </section>
 </section>
 <section id="practical-applications" class="level2">
 <h2 class="anchored" data-anchor-id="practical-applications">Practical Applications</h2>
-<section id="quality-control-example" class="level3">
-<h3 class="anchored" data-anchor-id="quality-control-example">Quality Control Example</h3>
 <p>Let’s use our techniques to analyze car performance:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analyze the distribution of horsepower</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>hp_hist <span class="ot">&lt;-</span> <span class="fu">hist</span>(mtcars<span class="sc">$</span>hp,</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">breaks =</span> <span class="dv">10</span>,</span>
-<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">main =</span> <span class="st">&quot;Distribution of Horsepower&quot;</span>,</span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">xlab =</span> <span class="st">&quot;Horsepower&quot;</span>,</span>
-<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>,</span>
-<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">col =</span> <span class="st">&quot;lightsteelblue&quot;</span>,</span>
-<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">border =</span> <span class="st">&quot;navy&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>hp_hist <span class="ot">&lt;-</span> <span class="fu">hist</span>(</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>  mtcars<span class="sc">$</span>hp,</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> <span class="dv">10</span>,</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">&quot;Distribution of Horsepower&quot;</span>,</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Horsepower&quot;</span>,</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">&quot;Frequency&quot;</span>,</span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">&quot;lightsteelblue&quot;</span>,</span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="st">&quot;navy&quot;</span></span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2734,45 +2734,8 @@ Cumulative Proportions:</code></pre>
 </div>
 </div>
 </section>
-<section id="creating-publication-ready-tables" class="level3">
-<h3 class="anchored" data-anchor-id="creating-publication-ready-tables">Creating Publication-Ready Tables</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a formatted frequency table</span></span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>gear_analysis <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  freq <span class="ot">&lt;-</span> <span class="fu">table</span>(x)</span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  prop <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(freq)</span>
-<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>  cumfreq <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(freq)</span>
-<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>  cumprop <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(prop)</span>
-<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Value =</span> <span class="fu">names</span>(freq),</span>
-<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Frequency =</span> <span class="fu">as.numeric</span>(freq),</span>
-<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Proportion =</span> <span class="fu">round</span>(<span class="fu">as.numeric</span>(prop), <span class="dv">3</span>),</span>
-<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">Percentage =</span> <span class="fu">round</span>(<span class="fu">as.numeric</span>(prop <span class="sc">*</span> <span class="dv">100</span>), <span class="dv">1</span>),</span>
-<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">Cum_Frequency =</span> <span class="fu">as.numeric</span>(cumfreq),</span>
-<span id="cb63-14"><a href="#cb63-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">Cum_Proportion =</span> <span class="fu">round</span>(<span class="fu">as.numeric</span>(cumprop), <span class="dv">3</span>)</span>
-<span id="cb63-15"><a href="#cb63-15" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb63-16"><a href="#cb63-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb63-17"><a href="#cb63-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb63-18"><a href="#cb63-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-19"><a href="#cb63-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply to gear data</span></span>
-<span id="cb63-20"><a href="#cb63-20" aria-hidden="true" tabindex="-1"></a>gear_table <span class="ot">&lt;-</span> <span class="fu">gear_analysis</span>(mtcars<span class="sc">$</span>gear)</span>
-<span id="cb63-21"><a href="#cb63-21" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Frequency Analysis: Number of Forward Gears</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Frequency Analysis: Number of Forward Gears</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(gear_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Value Frequency Proportion Percentage Cum_Frequency Cum_Proportion
-1     3        15      0.469       46.9            15          0.469
-2     4        12      0.375       37.5            27          0.844
-3     5         5      0.156       15.6            32          1.000</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="exercise-problems" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-problems">Exercise Problems</h2>
+<section id="practice-problems" class="level2">
+<h2 class="anchored" data-anchor-id="practice-problems">Practice Problems</h2>
 <p><strong>Exercise 1</strong>: Create a frequency table for the <code>carb</code> variable (number of carburetors) in the <code>mtcars</code> dataset. Calculate both frequencies and percentages.</p>
 <p><strong>Exercise 2</strong>: Create a histogram of the <code>wt</code> variable (weight) with 6 bins. Add appropriate titles and labels.</p>
 <p><strong>Exercise 3</strong>: Create a grouped bar plot showing the relationship between <code>gear</code> (number of gears) and <code>cyl</code> (number of cylinders).</p>
@@ -2782,21 +2745,18 @@ Cumulative Proportions:</code></pre>
 <h2 class="anchored" data-anchor-id="key-points-to-remember">Key Points to Remember</h2>
 <p>When working with frequency analysis in R, keep these essential points in mind:</p>
 <ul>
-<li>Use <code>table()</code> for creating frequency tables from categorical data</li>
-<li>Apply <code>prop.table()</code> to convert frequencies to proportions</li>
-<li>Employ <code>cumsum()</code> to calculate cumulative frequencies</li>
-<li>Use <code>barplot()</code> for categorical data visualization</li>
-<li>Use <code>hist()</code> for continuous data visualization</li>
-<li>The <code>breaks</code> argument in <code>hist()</code> controls bin specification</li>
-<li>Always add meaningful titles and axis labels to your plots</li>
-<li>Consider your audience when choosing between frequencies, proportions, or percentages</li>
+<li><strong>Use <code>table()</code> for creating frequency tables</strong> from categorical or discrete data</li>
+<li><strong>Apply <code>prop.table()</code> to convert frequencies to proportions</strong> - these are often more meaningful than raw counts</li>
+<li><strong>Employ <code>cumsum()</code> to calculate cumulative frequencies</strong> - useful for ordered categories</li>
+<li><strong>Use <code>barplot()</code> for categorical data visualization</strong> - the standard way to display frequency tables graphically</li>
+<li><strong>Use <code>hist()</code> for continuous data visualization</strong> - shows the shape and spread of your data’s distribution</li>
+<li><strong>Control histogram bins carefully</strong> - the <code>breaks</code> argument lets you specify the number of bins or exact bin boundaries</li>
+<li><strong>Always add meaningful titles and axis labels</strong> to your plots - this makes them much easier to understand</li>
+<li><strong>Consider your audience when choosing between frequencies, proportions, or percentages</strong> - percentages are often most intuitive</li>
+<li><strong>Use the <code>cut()</code> function to create frequency tables for continuous data</strong> by grouping values into bins</li>
+<li><strong>Remember that bar plots are for categorical data, histograms are for continuous data</strong> - this is a fundamental distinction in data visualization</li>
 </ul>
-<p>The combination of frequency tables and visual displays provides a powerful foundation for understanding your data’s distribution and identifying patterns that merit further investigation.</p>
-</section>
-<section id="summary" class="level2">
-<h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>In this lesson, you learned to create comprehensive frequency analyses using base R functions. You can now construct frequency tables with cumulative frequencies, create informative bar plots for categorical data, and build histograms to visualize continuous distributions. These fundamental skills form the backbone of exploratory data analysis and will serve you well as you progress to more advanced statistical techniques.</p>
-<p>Remember that the choice between different visualization methods depends on your data type: use bar plots for categorical variables and histograms for continuous variables. Always consider your audience and the story your data tells when selecting appropriate frequency measures and visual displays.</p>
+<p>The combination of frequency tables and visual displays gives you a solid foundation for understanding your data’s distribution and identifying patterns that might need closer examination. These techniques will serve as building blocks for more advanced statistical analyses you’ll learn later.</p>
 </section>
 </section>
 

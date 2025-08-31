@@ -1,0 +1,415 @@
+---
+title: "Lab 2"
+author: "Erik Whitfield"
+date: "`r Sys.Date()`"
+format:
+  html:
+    theme: solar
+    toc: true
+    self-contained: true
+---
+
+# Exploring Data Through Frequencies
+
+## Introduction
+
+Understanding the distribution of data is fundamental to statistical analysis.
+For this lab, we'll create frequency tables, calculate cumulative frequencies, and visualize distributions using bar plots and histograms using basic R functions.
+
+### Built-in Datasets in R
+
+R comes with many built-in datasets that are great for learning and practicing data analysis techniques.
+These datasets are immediately available without needing to load external files.
+Try the running the code below on your computer.
+
+```{r}
+# See all available built-in datasets
+library(datasets)
+data()
+```
+
+We'll use the `mtcars` dataset, which contains information about 32 automobiles from a 1974 Motor Trend magazine.
+This dataset is popular in R tutorials and instructional materials because it's relatively small, easy to understand, and contains both categorical and continuous variables.
+
+Let's begin by examining our dataset:
+
+```{r}
+# Load and examine the mtcars dataset
+data(mtcars)
+head(mtcars)
+str(mtcars)
+```
+
+The `mtcars` dataset contains 32 observations (cars) and 11 variables including miles per gallon (mpg), number of cylinders (cyl), horsepower (hp), and transmission type (am, where 0=automatic and 1=manual).
+
+## Frequency Tables
+
+### Basic Frequency Tables
+
+A frequency table shows how often each unique value appears in your data.
+This is especially useful for categorical variables (like the number of cylinders in a car engine) or discrete numeric variables.
+The `table()` function is your primary tool for creating frequency tables in R.
+
+Let's create a frequency table for the number of cylinders in our cars:
+
+```{r}
+# Create a frequency table for number of cylinders
+cyl_freq <- table(mtcars$cyl)
+cyl_freq
+```
+
+This output tells us that 11 cars have 4 cylinders, 7 cars have 6 cylinders, and 14 cars have 8 cylinders.
+The `table()` function automatically counts each unique value and presents the results.
+
+### Frequency Tables with Proportions
+
+While raw frequencies tell us how many observations fall into each category, proportions (also called relative frequencies) tell us what proportion of the total each category represents.
+
+To convert frequencies to proportions, use the `prop.table()` function:
+
+```{r}
+# Calculate proportions
+cyl_prop <- prop.table(cyl_freq)
+cyl_prop
+
+# Convert to percentages (multiply by 100)
+cyl_percent <- prop.table(cyl_freq) * 100
+cyl_percent
+```
+
+Now we can see that approximately 34% of cars have 4 cylinders, 22% have 6 cylinders, and 44% have 8 cylinders.
+Percentages are sometimes easier to interpret and communicate to others than raw proportions.
+
+### Cumulative Frequencies
+
+Cumulative frequencies show the running total of frequencies up to and including each category.
+They answer questions like "How many cars have 6 cylinders or fewer?"
+This is useful when your categories have a natural ordering (like our cylinder counts: 4, 6, 8).
+
+Use the `cumsum()` function to calculate cumulative frequencies:
+
+```{r}
+# Calculate cumulative frequencies
+cyl_cumfreq <- cumsum(cyl_freq)
+cyl_cumfreq
+
+# Create a comprehensive frequency table combining all our calculations
+freq_table <- data.frame(
+  Cylinders = names(cyl_freq),
+  Frequency = as.numeric(cyl_freq),
+  Proportion = as.numeric(cyl_prop),
+  Percentage = as.numeric(cyl_percent),
+  Cumulative_Freq = as.numeric(cyl_cumfreq),
+  Cumulative_Prop = cumsum(as.numeric(cyl_prop))
+)
+freq_table
+```
+
+Looking at our cumulative frequencies, we can see that 18 cars (11 + 7) have 6 cylinders or fewer, and all 32 cars have 8 cylinders or fewer (which makes sense since 8 is the maximum in our dataset).
+
+## Bar Plots
+
+### Basic Bar Plots
+
+Bar plots (also called bar charts) are a common way to visualize categorical data.
+Each bar's height represents the frequency (count) of that category.
+The `barplot()` function in base R creates bar charts from frequency tables or vectors.
+
+Let's create a basic bar plot of our cylinder frequencies:
+
+```{r}
+# Basic bar plot of cylinder frequencies
+barplot(
+  cyl_freq,
+  main = "Frequency of Cylinder Counts",
+  xlab = "Number of Cylinders",
+  ylab = "Frequency",
+  col = "lightblue",
+  border = "black"
+)
+```
+
+The `main` argument adds a title, `xlab` and `ylab` add axis labels, `col` sets the bar color, and `border` sets the color of the bar outlines.
+Good labels make your plots much easier to understand.
+
+### Horizontal Bar Plots
+
+Sometimes horizontal bar plots are easier to read, especially when category names are long.
+You can create these by adding the `horiz = TRUE` argument:
+
+```{r}
+# Horizontal bar plot
+barplot(
+  cyl_freq,
+  main = "Cylinder Distribution",
+  xlab = "Frequency",        # Note: x and y labels are swapped
+  ylab = "Number of Cylinders",
+  col = "orange",
+  horiz = TRUE,             # Make bars horizontal
+  las = 1                   # las=1 makes y-axis labels horizontal
+)                  
+```
+
+Notice how we swapped the x and y axis labels since the orientation changed.
+The `las` argument controls the orientation of axis labels.
+
+## Histograms
+
+### Basic Histograms
+
+While bar plots work great for categorical data, histograms are designed for continuous numeric data.
+A histogram divides the range of values into intervals (called "bins") and shows how many observations fall into each bin.
+This gives you a picture of the data's distribution.
+
+The `hist()` function creates histograms in R:
+
+```{r}
+# Basic histogram of miles per gallon
+hist(
+  mtcars$mpg,
+  main = "Distribution of Miles Per Gallon",
+  xlab = "Miles Per Gallon (mpg)",
+  ylab = "Frequency",
+  col = "lightblue",
+  border = "black"
+)
+```
+
+This histogram shows us the distribution of fuel efficiency in our car dataset.
+Most cars get between 15-25 mpg, with a few very fuel-efficient cars getting over 30 mpg.
+
+### Controlling Bin Width and Number
+
+One of the most important decisions when creating a histogram is how many bins to use.
+Too few bins and you lose detail; too many bins and the pattern becomes hard to see.
+R chooses a reasonable default, but you can control this with the `breaks` argument:
+
+```{r}
+# Histogram with specific number of bins
+hist(
+  mtcars$mpg,
+  breaks = 8, # Use exactly 8 bins
+  main = "MPG Distribution (8 bins)",
+  xlab = "Miles Per Gallon",
+  ylab = "Frequency",
+  col = "palegreen",
+  border = "darkgreen"
+)
+
+# Histogram with specific break points
+hist(
+  mtcars$mpg,
+  breaks = c(10, 15, 20, 25, 30, 35),  # Specify exact bin boundaries
+  main = "MPG Distribution (Custom bins)",
+  xlab = "Miles Per Gallon",
+  ylab = "Frequency",
+  col = "lightcoral",
+  border = "darkred"
+)
+```
+
+The first approach lets R choose where to place the bin boundaries, but uses your specified number of bins.
+The second approach gives you complete control over the bin boundaries, which is useful when you want bins of specific sizes or at meaningful breakpoints.
+
+### Density Histograms
+
+Sometimes instead of showing raw counts, it's useful to show the proportion of observations in each bin.
+This is especially helpful when comparing distributions from datasets of different sizes, or when you want to overlay a smooth density curve.
+
+```{r}
+# Density histogram
+hist(
+  mtcars$mpg,
+  freq = FALSE, # This creates a density histogram instead of frequency
+  main = "MPG Density Distribution",
+  xlab = "Miles Per Gallon",
+  ylab = "Density",
+  col = "lightyellow",
+  border = "orange"
+)
+
+# Add a smooth density curve
+lines(density(mtcars$mpg), col = "red", lwd = 2)
+```
+
+The density curve (red line) shows a smooth estimate of the underlying distribution.
+The area under both the histogram bars and the density curve equals 1.0, representing the total probability.
+
+### Multiple Histograms for Comparison
+
+Often you want to compare the distribution of a variable across different groups.
+One approach is to create side-by-side histograms.
+We'll compare the fuel efficiency of automatic versus manual transmission cars:
+
+```{r}
+# Set up plotting area for multiple plots side by side
+par(mfrow = c(1, 2))  # 1 row, 2 columns
+
+# Histogram for automatic transmission cars (am = 0)
+auto_mpg <- mtcars$mpg[mtcars$am == 0]  # Extract mpg values for automatic cars
+hist(
+  auto_mpg,
+  main = "MPG: Automatic Transmission",
+  xlab = "Miles Per Gallon",
+  ylab = "Frequency",
+  col = "lightblue",
+  xlim = c(10, 35), # Same x-axis range for both plots
+  ylim = c(0, 8)    # Same y-axis range for both plots
+)
+
+# Histogram for manual transmission cars (am = 1)
+manual_mpg <- mtcars$mpg[mtcars$am == 1]  # Extract mpg values for manual cars
+hist(
+  manual_mpg,
+  main = "MPG: Manual Transmission",
+  xlab = "Miles Per Gallon",
+  ylab = "Frequency",
+  col = "lightcoral",
+  xlim = c(10, 35), # Same x-axis range for both plots
+  ylim = c(0, 8)    # Same y-axis range for both plots
+)
+
+# Reset plotting parameters to default (single plot)
+par(mfrow = c(1, 1))
+```
+
+Using the same axis ranges (`xlim` and `ylim`) makes it easier to compare the two distributions.
+From these histograms, we can see that manual transmission cars tend to have higher fuel efficiency than automatic transmission cars.
+
+## Advanced Techniques
+
+### Creating Frequency Tables for Continuous Data
+
+Sometimes you want to create a frequency table for continuous data, similar to what a histogram shows but in table form.
+To do this, you first need to group the continuous values into bins using the `cut()` function:
+
+```{r}
+# Create bins for miles per gallon
+mpg_bins <- cut(
+  mtcars$mpg,
+  breaks = c(10, 15, 20, 25, 30, 35),                     
+  labels = c("10-15", "15-20", "20-25", "25-30", "30-35"),
+  include.lowest = TRUE
+)
+
+# Create frequency table from the binned data
+mpg_freq <- table(mpg_bins)
+mpg_freq
+
+# Calculate cumulative frequencies
+mpg_cumfreq <- cumsum(mpg_freq)
+mpg_cumfreq
+```
+
+The `cut()` function transforms continuous data into categorical data by assigning each value to a bin.
+This lets you apply all the frequency table techniques we learned earlier to continuous variables.
+
+### Frequency Analysis
+
+Let's combine all our techniques to perform a complete frequency analysis.
+This demonstrates how to systematically examine a categorical variable:
+
+```{r}
+# Complete frequency analysis for cylinder data
+cat("=== FREQUENCY ANALYSIS: ENGINE CYLINDERS ===\n\n")
+
+# Basic frequency table
+freq <- table(mtcars$cyl)
+cat("Frequency Table:\n")
+print(freq)
+
+cat("\nProportion Table:\n")
+prop <- prop.table(freq)
+print(round(prop, 3))  # Round to 3 decimal places for readability
+
+cat("\nPercentage Table:\n")
+percent <- prop.table(freq) * 100
+print(round(percent, 1))  # Round to 1 decimal place
+
+cat("\nCumulative Frequencies:\n")
+cumfreq <- cumsum(freq)
+print(cumfreq)
+
+cat("\nCumulative Proportions:\n")
+cumprop <- cumsum(prop)
+print(round(cumprop, 3))
+```
+
+This helps you understand how the variable is distributed in your dataset.
+
+### Extracting Information from Histograms
+
+When you create a histogram, R actually calculates a lot of information behind the scenes.
+You can access this information by storing the histogram in a variable (using `plot = FALSE` to prevent it from displaying):
+
+```{r}
+# Store histogram information without plotting
+mpg_hist <- hist(mtcars$mpg, plot = FALSE)
+
+# Examine the structure of the histogram object
+str(mpg_hist)
+
+# Access specific components
+cat("Bin breaks (boundaries):", mpg_hist$breaks, "\n")
+cat("Bin counts (frequencies):", mpg_hist$counts, "\n")
+cat("Bin midpoints:", mpg_hist$mids, "\n")
+```
+
+This information can be useful for further analysis or for creating custom visualizations.
+The `breaks` show where each bin starts and ends, `counts` show how many observations are in each bin (the bar heights), and `mids` show the center point of each bin.
+
+## Practical Applications
+
+Let's use our techniques to analyze car performance:
+
+```{r}
+# Analyze the distribution of horsepower
+hp_hist <- hist(
+  mtcars$hp,
+  breaks = 10,
+  main = "Distribution of Horsepower",
+  xlab = "Horsepower",
+  ylab = "Frequency",
+  col = "lightsteelblue",
+  border = "navy"
+)
+
+# Identify cars with unusual horsepower
+mean_hp <- mean(mtcars$hp)
+sd_hp <- sd(mtcars$hp)
+
+# Cars with horsepower more than 2 standard deviations from mean
+unusual_cars <- subset(mtcars, abs(hp - mean_hp) > 2 * sd_hp)
+cat("Cars with unusual horsepower:\n")
+print(row.names(unusual_cars))
+```
+
+## Practice Problems
+
+**Exercise 1**: Create a frequency table for the `carb` variable (number of carburetors) in the `mtcars` dataset.
+Calculate both frequencies and percentages.
+
+**Exercise 2**: Create a histogram of the `wt` variable (weight) with 6 bins.
+Add appropriate titles and labels.
+
+**Exercise 3**: Create a grouped bar plot showing the relationship between `gear` (number of gears) and `cyl` (number of cylinders).
+
+**Exercise 4**: Using the `airquality` dataset, create a frequency table for the `Month` variable and calculate cumulative frequencies.
+
+## Key Points to Remember
+
+When working with frequency analysis in R, keep these essential points in mind:
+
+- **Use `table()` for creating frequency tables** from categorical or discrete data
+- **Apply `prop.table()` to convert frequencies to proportions** - these are often more meaningful than raw counts
+- **Employ `cumsum()` to calculate cumulative frequencies** - useful for ordered categories
+- **Use `barplot()` for categorical data visualization** - the standard way to display frequency tables graphically
+- **Use `hist()` for continuous data visualization** - shows the shape and spread of your data's distribution
+- **Control histogram bins carefully** - the `breaks` argument lets you specify the number of bins or exact bin boundaries
+- **Always add meaningful titles and axis labels** to your plots - this makes them much easier to understand
+- **Consider your audience when choosing between frequencies, proportions, or percentages** - percentages are often most intuitive
+- **Use the `cut()` function to create frequency tables for continuous data** by grouping values into bins
+- **Remember that bar plots are for categorical data, histograms are for continuous data** - this is a fundamental distinction in data visualization
+
+The combination of frequency tables and visual displays gives you a solid foundation for understanding your data's distribution and identifying patterns that might need closer examination.
+These techniques will serve as building blocks for more advanced statistical analyses you'll learn later.

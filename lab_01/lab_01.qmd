@@ -1,0 +1,443 @@
+---
+title: "Lab 1"
+author: "Erik Whitfield"
+date: "`r Sys.Date()`"
+format:
+  html:
+    theme: solar
+    toc: true
+    self-contained: true
+---
+
+# First Steps in R Programming
+
+## Introduction
+
+Welcome to R!
+This lab will introduce you to the basics of programming in R.
+Don't worry if you've never programmed before.
+We'll start from the very beginning and build up your skills step by step.
+
+R is a powerful statistical programming language that's widely used by data analysts, researchers, and statisticians around the world.
+What makes R special is that it's designed specifically for working with data, making complex analyses surprisingly straightforward.
+
+For this lab, we'll use the `iris` dataset, which contains measurements of iris flowers.
+This dataset is good for beginners because it's small (150 observations), easy to understand, and appears in countless R tutorials and statistics textbooks.
+
+Let's look at our dataset:
+
+```{r}
+# Load the iris dataset
+data(iris)
+
+# Display the first few rows
+head(iris)
+```
+
+The `iris` dataset contains measurements of 150 iris flowers from three different species.
+Each flower has four measurements: sepal length, sepal width, petal length, and petal width (all in centimeters).
+
+## Basic R Operations
+
+### Using R as a Calculator
+
+R can perform mathematical calculations just like a calculator.
+Let's start with some basic arithmetic:
+
+```{r}
+# Basic arithmetic operations
+5 + 3        # Addition
+10 - 4       # Subtraction
+6 * 7        # Multiplication
+20 / 4       # Division
+2^3          # Exponentiation (2 to the power of 3)
+sqrt(16)     # Square root
+```
+
+Notice that R shows you the result immediately.
+The `[1]` at the beginning of each result line is R's way of numbering the output (useful when results have multiple values).
+
+### Order of Operations
+
+R follows the standard mathematical order of operations (PEMDAS):
+
+```{r}
+# R follows order of operations
+5 + 2 * 3       # Multiplication first: 5 + 6 = 11
+(5 + 2) * 3     # Parentheses first: 7 * 3 = 21
+10 / 2 + 3      # Division first: 5 + 3 = 8
+10 / (2 + 3)    # Parentheses first: 10 / 5 = 2
+```
+
+Always use parentheses when you're unsure about the order of operations!
+
+## Working with Objects
+
+### Creating Variables
+
+In programming, a variable is like a labeled container that stores information.
+In R, we create variables using the assignment operator `<-`:
+
+```{r}
+# Create variables
+my_number <- 42
+my_name <- "Hamlet"
+flower_count <- 150
+
+# Display variable contents
+my_number
+my_name
+flower_count
+```
+
+Variable names should be descriptive and follow these rules:
+- Start with a letter
+- Can contain letters, numbers, underscores, and periods
+- Cannot contain spaces
+- Are case-sensitive (`MyVar` and `myvar` are different)
+
+### Working with Variables
+
+Once you create variables, you can use them in calculations and operations:
+
+```{r}
+# Use variables in calculations
+price_per_item <- 2.50
+quantity <- 8
+total_cost <- price_per_item * quantity
+total_cost
+
+# You can update variables
+quantity <- quantity + 2  # Add 2 more items
+quantity
+
+# Create new variables from existing ones
+tax_rate <- 0.08
+total_with_tax <- total_cost * (1 + tax_rate)
+total_with_tax
+```
+
+## Data Types
+
+R works with different types of data.
+Understanding data types is important because they determine what operations you can perform.
+
+### Numeric Data
+
+Numbers can be integers (whole numbers) or doubles (decimal numbers).
+By default, R stores whole numbers as decimal numbers for precision in mathematical operations.
+You can force R to use an integer by appending "L" to a number, but you'll rarely need to do this.
+
+```{r}
+# Numeric data examples
+age <- 30L             # Integer (explicitly)
+height <- 5.8          # Double (decimal)
+temperature <- -3.2    # Can be negative
+
+# Check what type of data you have
+typeof(age)
+typeof(height)
+```
+
+### Character Data (Text)
+
+Text data is called "character" data in R and must be enclosed in quotes:
+
+```{r}
+# Character data examples
+first_name <- "Juliet"
+last_name <- "Capulet"
+full_name <- paste(first_name, last_name)  # Combine text
+full_name
+
+# Check the data type
+typeof(first_name)
+```
+
+### Logical Data (True/False)
+
+Logical data represents yes/no, true/false conditions:
+
+```{r}
+# Logical data examples
+is_student <- TRUE
+is_working <- FALSE
+has_license <- TRUE
+
+# Logical operations
+is_adult <- age >= 18
+is_adult
+
+typeof(is_student)
+```
+
+## Exploring the Iris Dataset
+
+Now let's use our programming skills to explore the iris dataset:
+
+### Basic Dataset Information
+
+```{r}
+# Get basic information about the dataset
+nrow(iris)      # Number of rows
+ncol(iris)      # Number of columns
+dim(iris)       # Dimensions (rows, columns)
+names(iris)     # Column names
+str(iris)       # Structure of the data
+```
+
+The `str()` function is particularly useful—it shows you the structure of your data, including variable types and the first few values.
+
+### Accessing Parts of the Dataset
+
+You can access specific columns (variables) in your dataset using the `$` operator:
+
+```{r}
+# Access individual columns
+sepal_lengths <- iris$Sepal.Length
+petal_lengths <- iris$Petal.Length
+
+# Look at the first 10 values
+sepal_lengths[1:10]
+petal_lengths[1:10]
+```
+
+The square brackets `[1:10]` tell R to show positions 1 through 10.
+This is called indexing.
+
+### Basic Statistics
+
+R makes it easy to calculate basic statistics:
+
+```{r}
+# Calculate basic statistics for sepal length
+mean(iris$Sepal.Length)      # Average
+median(iris$Sepal.Length)    # Middle value
+min(iris$Sepal.Length)       # Minimum value
+max(iris$Sepal.Length)       # Maximum value
+range(iris$Sepal.Length)     # Minimum and maximum
+sd(iris$Sepal.Length)        # Standard deviation
+```
+
+### Summary Statistics
+
+The `summary()` function gives you a quick overview of each variable:
+
+```{r}
+# Get summary statistics for the entire dataset
+summary(iris)
+```
+
+This shows you the minimum, first quartile, median, mean, third quartile, and maximum for numeric variables.
+For categorical variables (like Species), it shows counts.
+
+## Working with Vectors
+
+A vector is a collection of values of the same type.
+Much of R's power comes from working with vectors:
+
+### Creating Vectors
+
+```{r}
+# Create vectors using c() function
+ages <- c(30, 50, 22, 35, 28, 45)
+names <- c("Hamlet", "Lear", "Romeo", "Othello", "Juliet", "Macbeth")
+heights <- c(5.8, 5.4, 6.1, 5.9, 5.2, 5.7)
+
+# Display vectors
+ages
+names
+heights
+```
+
+### Vector Operations
+
+You can perform operations on entire vectors at once:
+
+```{r}
+# Mathematical operations on vectors
+ages_in_months <- ages * 12
+ages_in_months
+
+# Convert heights from feet to inches
+heights_inches <- heights * 12
+heights_inches
+
+# Logical operations
+is_adult <- ages >= 18
+is_adult
+
+# How many adults?
+sum(is_adult)  # TRUE counts as 1, FALSE as 0
+```
+
+### Vector Indexing
+
+You can access specific elements of a vector:
+
+```{r}
+# Access specific elements
+first_age <- ages[1]        # First element
+last_age <- ages[6]         # Sixth element
+first_three <- ages[1:3]    # First three elements
+selected <- ages[c(1, 3, 5)] # Elements 1, 3, and 5
+
+first_age
+first_three
+selected
+```
+
+## Simple Data Analysis
+
+Let's put everything together to analyze the iris dataset:
+
+### Comparing Species
+
+```{r}
+# Look at the species in our dataset
+unique(iris$Species)        # What species do we have?
+table(iris$Species)         # How many of each species?
+
+# Calculate average petal length for each species
+setosa_petals <- iris$Petal.Length[iris$Species == "setosa"]
+versicolor_petals <- iris$Petal.Length[iris$Species == "versicolor"]
+virginica_petals <- iris$Petal.Length[iris$Species == "virginica"]
+
+mean(setosa_petals)
+mean(versicolor_petals)
+mean(virginica_petals)
+```
+
+### Finding Interesting Patterns
+
+```{r}
+# Find the largest and smallest flowers
+largest_sepal <- max(iris$Sepal.Length)
+smallest_sepal <- min(iris$Sepal.Length)
+
+cat("Largest sepal length:", largest_sepal, "cm\n")
+cat("Smallest sepal length:", smallest_sepal, "cm\n")
+
+# Which flowers have the largest and smallest sepals?
+which(iris$Sepal.Length == largest_sepal)
+which(iris$Sepal.Length == smallest_sepal)
+
+# What species are they?
+iris$Species[iris$Sepal.Length == largest_sepal]
+iris$Species[iris$Sepal.Length == smallest_sepal]
+```
+
+### Creating New Variables
+
+You can create new variables based on existing ones:
+
+```{r}
+# Create a new variable: sepal area (length × width)
+iris$Sepal.Area <- iris$Sepal.Length * iris$Sepal.Width
+
+# Create a new variable: petal area
+iris$Petal.Area <- iris$Petal.Length * iris$Petal.Width
+
+# Look at our new variables
+head(iris$Sepal.Area)
+summary(iris$Sepal.Area)
+```
+
+## Functions in R
+
+Functions are pre-written pieces of code that perform specific tasks.
+We've already used many functions like `mean()`, `max()`, and `summary()`.
+
+### Using Functions
+
+Every function has a name followed by parentheses.
+Inside the parentheses, you put the inputs (called arguments):
+
+```{r}
+# Function structure: function_name(arguments)
+mean(iris$Sepal.Length)           # One argument
+round(3.14159, digits = 2)        # Two arguments
+paste("Hello", "World", sep = " ") # Multiple arguments
+```
+
+### Getting Help
+
+When you need help with a function, use the `?` operator:
+
+```{r}
+# Get help for functions (uncomment to run)
+# ?mean
+# ?summary
+# ?paste
+```
+
+This opens the help documentation, which explains what the function does and what arguments it accepts.
+
+## Comments and Good Practices
+
+### Writing Comments
+
+Comments are notes you write in your code to explain what you're doing.
+They start with `#` and are ignored by R:
+
+```{r}
+# This is a comment - R ignores this line
+x <- 5  # You can also put comments at the end of lines
+
+# Calculate the average sepal length
+average_sepal <- mean(iris$Sepal.Length)
+
+# Display the result
+average_sepal
+```
+
+Good comments explain *why* you're doing something, not just *what* you're doing.
+
+### Code Organization
+
+Keep your code organized and readable:
+
+```{r}
+# Good: Clear variable names and spacing
+flower_count <- nrow(iris)
+average_petal_length <- mean(iris$Petal.Length)
+
+# Less good: Unclear names and cramped
+n<-nrow(iris)
+x<-mean(iris$Petal.Length)
+
+flower_count
+average_petal_length
+```
+
+## Exercise Problems
+
+**Exercise 1**: Create three variables: your age, your height (in feet), and your favorite color. Display each variable.
+
+**Exercise 2**: Convert your height from feet to inches and store it in a new variable called `height_inches`.
+
+**Exercise 3**: Using the iris dataset, find the average sepal width for each species.
+
+**Exercise 4**: Create a new variable in the iris dataset called `Petal.Ratio` that equals petal length divided by petal width.
+
+**Exercise 5**: How many flowers in the iris dataset have sepal length greater than 6.0 cm?
+
+## Key Points to Remember
+
+As you continue learning R, keep these essential points in mind:
+
+- **R is case-sensitive** - `Data` and `data` are different
+- **Use the assignment operator `<-`** to create variables (not `=`)
+- **Use descriptive variable names** - `student_age` is better than `x`
+- **Comments are your friend** - use `#` to explain your code
+- **Functions need parentheses** - even if they take no arguments
+- **Vectors are fundamental** - R is designed to work with collections of data
+- **The `$` operator** accesses columns in datasets
+- **Square brackets `[]`** access specific elements or positions
+- **Practice regularly** - programming is a skill that improves with practice
+- **Don't be afraid to experiment** - R is forgiving and you can't break anything
+- **Use `?function_name`** to get help when you're stuck
+
+R has a learning curve, but it's incredibly rewarding once you get the hang of it.
+Every expert started as a beginner, so be patient with yourself and keep practicing!
+

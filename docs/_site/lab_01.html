@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Erik Whitfield">
-<meta name="dcterms.date" content="2025-08-30">
+<meta name="dcterms.date" content="2025-08-31">
 
-<title>Lab #1 Walkthrough</title>
+<title>Lab 1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -2180,22 +2180,56 @@ vertical-align: -.125em;
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-task" id="toc-the-task" class="nav-link active" data-scroll-target="#the-task">The Task</a></li>
-  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The Data</a></li>
-  <li><a href="#getting-organized" id="toc-getting-organized" class="nav-link" data-scroll-target="#getting-organized">Getting Organized</a></li>
-  <li><a href="#loading-the-data" id="toc-loading-the-data" class="nav-link" data-scroll-target="#loading-the-data">Loading the Data</a></li>
-  <li><a href="#interlude-comments" id="toc-interlude-comments" class="nav-link" data-scroll-target="#interlude-comments">Interlude: Comments</a></li>
-  <li><a href="#cleaning-the-data" id="toc-cleaning-the-data" class="nav-link" data-scroll-target="#cleaning-the-data">Cleaning the Data</a></li>
-  <li><a href="#descriptive-stats" id="toc-descriptive-stats" class="nav-link" data-scroll-target="#descriptive-stats">Descriptive Stats</a>
+  <li><a href="#first-steps-in-r-programming" id="toc-first-steps-in-r-programming" class="nav-link active" data-scroll-target="#first-steps-in-r-programming">First Steps in R Programming</a>
   <ul class="collapse">
-  <li><a href="#what-is-the-mean-age-in-years-for-everyone-in-the-data-set" id="toc-what-is-the-mean-age-in-years-for-everyone-in-the-data-set" class="nav-link" data-scroll-target="#what-is-the-mean-age-in-years-for-everyone-in-the-data-set">What is the mean age in years for <em>everyone</em> in the data set?</a></li>
-  <li><a href="#what-is-the-mean-age-for-students-in-the-data-set" id="toc-what-is-the-mean-age-for-students-in-the-data-set" class="nav-link" data-scroll-target="#what-is-the-mean-age-for-students-in-the-data-set">What is the mean age for <em>students</em> in the data set?</a></li>
-  <li><a href="#report-the-values-requested-below-for-the-following-variables-for-everyone-in-the-data-set.-round-to-two-decimal-places-when-it-makes-sense." id="toc-report-the-values-requested-below-for-the-following-variables-for-everyone-in-the-data-set.-round-to-two-decimal-places-when-it-makes-sense." class="nav-link" data-scroll-target="#report-the-values-requested-below-for-the-following-variables-for-everyone-in-the-data-set.-round-to-two-decimal-places-when-it-makes-sense.">Report the values requested below for the following variables (for everyone) in the data set. Round to two decimal places when it makes sense.</a></li>
-  <li><a href="#write-a-brief-paragraph-about-the-descriptive-statistics-you-reported-in-the-table.-this-is-a-skill.-its-a-balance-between-not-going-number-by-number-dont-describe-every-single-number-in-the-table-and-telling-the-story-of-the-data." id="toc-write-a-brief-paragraph-about-the-descriptive-statistics-you-reported-in-the-table.-this-is-a-skill.-its-a-balance-between-not-going-number-by-number-dont-describe-every-single-number-in-the-table-and-telling-the-story-of-the-data." class="nav-link" data-scroll-target="#write-a-brief-paragraph-about-the-descriptive-statistics-you-reported-in-the-table.-this-is-a-skill.-its-a-balance-between-not-going-number-by-number-dont-describe-every-single-number-in-the-table-and-telling-the-story-of-the-data.">Write a brief paragraph about the descriptive statistics you reported in the table. This is a skill. It’s a balance between not going number by number (don’t describe every single number in the table) and telling the “story” of the data.</a></li>
-  <li><a href="#which-two-variables-are-the-most-skewed-how-do-you-know" id="toc-which-two-variables-are-the-most-skewed-how-do-you-know" class="nav-link" data-scroll-target="#which-two-variables-are-the-most-skewed-how-do-you-know">Which two variables are the most skewed? How do you know?</a></li>
-  <li><a href="#use-r-to-calculate-the-mean-median-and-standard-deviation-for-the-following-data-set-7-8-10-6-5" id="toc-use-r-to-calculate-the-mean-median-and-standard-deviation-for-the-following-data-set-7-8-10-6-5" class="nav-link" data-scroll-target="#use-r-to-calculate-the-mean-median-and-standard-deviation-for-the-following-data-set-7-8-10-6-5">Use R to calculate the mean, median, and standard deviation for the following data set: 7, 8, 10, 6, 5</a></li>
-  <li><a href="#use-r-to-calculate-the-mean-median-and-standard-deviation-for-the-following-data-set-7-8-10-6-5-100" id="toc-use-r-to-calculate-the-mean-median-and-standard-deviation-for-the-following-data-set-7-8-10-6-5-100" class="nav-link" data-scroll-target="#use-r-to-calculate-the-mean-median-and-standard-deviation-for-the-following-data-set-7-8-10-6-5-100">Use R to calculate the mean, median, and standard deviation for the following data set: 7, 8, 10, 6, 5, 100</a></li>
-  <li><a href="#how-and-why-are-the-results-different-when-we-add-an-extreme-value" id="toc-how-and-why-are-the-results-different-when-we-add-an-extreme-value" class="nav-link" data-scroll-target="#how-and-why-are-the-results-different-when-we-add-an-extreme-value">How and why are the results different when we add an extreme value?</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#basic-r-operations" id="toc-basic-r-operations" class="nav-link" data-scroll-target="#basic-r-operations">Basic R Operations</a>
+  <ul class="collapse">
+  <li><a href="#using-r-as-a-calculator" id="toc-using-r-as-a-calculator" class="nav-link" data-scroll-target="#using-r-as-a-calculator">Using R as a Calculator</a></li>
+  <li><a href="#order-of-operations" id="toc-order-of-operations" class="nav-link" data-scroll-target="#order-of-operations">Order of Operations</a></li>
+  </ul></li>
+  <li><a href="#working-with-objects" id="toc-working-with-objects" class="nav-link" data-scroll-target="#working-with-objects">Working with Objects</a>
+  <ul class="collapse">
+  <li><a href="#creating-variables" id="toc-creating-variables" class="nav-link" data-scroll-target="#creating-variables">Creating Variables</a></li>
+  <li><a href="#working-with-variables" id="toc-working-with-variables" class="nav-link" data-scroll-target="#working-with-variables">Working with Variables</a></li>
+  </ul></li>
+  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">Data Types</a>
+  <ul class="collapse">
+  <li><a href="#numeric-data" id="toc-numeric-data" class="nav-link" data-scroll-target="#numeric-data">Numeric Data</a></li>
+  <li><a href="#character-data-text" id="toc-character-data-text" class="nav-link" data-scroll-target="#character-data-text">Character Data (Text)</a></li>
+  <li><a href="#logical-data-truefalse" id="toc-logical-data-truefalse" class="nav-link" data-scroll-target="#logical-data-truefalse">Logical Data (True/False)</a></li>
+  </ul></li>
+  <li><a href="#exploring-the-iris-dataset" id="toc-exploring-the-iris-dataset" class="nav-link" data-scroll-target="#exploring-the-iris-dataset">Exploring the Iris Dataset</a>
+  <ul class="collapse">
+  <li><a href="#basic-dataset-information" id="toc-basic-dataset-information" class="nav-link" data-scroll-target="#basic-dataset-information">Basic Dataset Information</a></li>
+  <li><a href="#accessing-parts-of-the-dataset" id="toc-accessing-parts-of-the-dataset" class="nav-link" data-scroll-target="#accessing-parts-of-the-dataset">Accessing Parts of the Dataset</a></li>
+  <li><a href="#basic-statistics" id="toc-basic-statistics" class="nav-link" data-scroll-target="#basic-statistics">Basic Statistics</a></li>
+  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics">Summary Statistics</a></li>
+  </ul></li>
+  <li><a href="#working-with-vectors" id="toc-working-with-vectors" class="nav-link" data-scroll-target="#working-with-vectors">Working with Vectors</a>
+  <ul class="collapse">
+  <li><a href="#creating-vectors" id="toc-creating-vectors" class="nav-link" data-scroll-target="#creating-vectors">Creating Vectors</a></li>
+  <li><a href="#vector-operations" id="toc-vector-operations" class="nav-link" data-scroll-target="#vector-operations">Vector Operations</a></li>
+  <li><a href="#vector-indexing" id="toc-vector-indexing" class="nav-link" data-scroll-target="#vector-indexing">Vector Indexing</a></li>
+  </ul></li>
+  <li><a href="#simple-data-analysis" id="toc-simple-data-analysis" class="nav-link" data-scroll-target="#simple-data-analysis">Simple Data Analysis</a>
+  <ul class="collapse">
+  <li><a href="#comparing-species" id="toc-comparing-species" class="nav-link" data-scroll-target="#comparing-species">Comparing Species</a></li>
+  <li><a href="#finding-interesting-patterns" id="toc-finding-interesting-patterns" class="nav-link" data-scroll-target="#finding-interesting-patterns">Finding Interesting Patterns</a></li>
+  <li><a href="#creating-new-variables" id="toc-creating-new-variables" class="nav-link" data-scroll-target="#creating-new-variables">Creating New Variables</a></li>
+  </ul></li>
+  <li><a href="#functions-in-r" id="toc-functions-in-r" class="nav-link" data-scroll-target="#functions-in-r">Functions in R</a>
+  <ul class="collapse">
+  <li><a href="#using-functions" id="toc-using-functions" class="nav-link" data-scroll-target="#using-functions">Using Functions</a></li>
+  <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting Help</a></li>
+  </ul></li>
+  <li><a href="#comments-and-good-practices" id="toc-comments-and-good-practices" class="nav-link" data-scroll-target="#comments-and-good-practices">Comments and Good Practices</a>
+  <ul class="collapse">
+  <li><a href="#writing-comments" id="toc-writing-comments" class="nav-link" data-scroll-target="#writing-comments">Writing Comments</a></li>
+  <li><a href="#code-organization" id="toc-code-organization" class="nav-link" data-scroll-target="#code-organization">Code Organization</a></li>
+  </ul></li>
+  <li><a href="#exercise-problems" id="toc-exercise-problems" class="nav-link" data-scroll-target="#exercise-problems">Exercise Problems</a></li>
+  <li><a href="#key-points-to-remember" id="toc-key-points-to-remember" class="nav-link" data-scroll-target="#key-points-to-remember">Key Points to Remember</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -2204,7 +2238,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab #1 Walkthrough</h1>
+<h1 class="title">Lab 1</h1>
 </div>
 
 
@@ -2221,7 +2255,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 30, 2025</p>
+      <p class="date">August 31, 2025</p>
     </div>
   </div>
   
@@ -2233,502 +2267,601 @@ vertical-align: -.125em;
 </header>
 
 
-<section id="the-task" class="level1">
-<h1>The Task</h1>
-<p>We have a small data set. We want to see what it contains and do some basic descriptive statistics. This is pretty much how most quantitative analyses begin, so we want to get comfortable with the basics as soon as possible.</p>
+<section id="first-steps-in-r-programming" class="level1">
+<h1>First Steps in R Programming</h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Welcome to R! This lab will introduce you to the basics of programming in R. Don’t worry if you’ve never programmed before. We’ll start from the very beginning and build up your skills step by step.</p>
+<p>R is a powerful statistical programming language that’s widely used by data analysts, researchers, and statisticians around the world. What makes R special is that it’s designed specifically for working with data, making complex analyses surprisingly straightforward.</p>
+<p>For this lab, we’ll use the <code>iris</code> dataset, which contains measurements of iris flowers. This dataset is good for beginners because it’s small (150 observations), easy to understand, and appears in countless R tutorials and statistics textbooks.</p>
+<p>Let’s look at our dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the iris dataset</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(iris)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa</code></pre>
+</div>
+</div>
+<p>The <code>iris</code> dataset contains measurements of 150 iris flowers from three different species. Each flower has four measurements: sepal length, sepal width, petal length, and petal width (all in centimeters).</p>
 </section>
-<section id="the-data" class="level1">
-<h1>The Data</h1>
-<p>The data we will use is a small <code>csv</code> file. A <code>csv</code> file is a very common text file that stores data in rows and columns, with each value separated by a comma. You’ll encounter these files a lot in the wild. The particular file that we are using here is called <code>labOne.csv</code>. You can find it on Canvas under <a href="https://canvas.colorado.edu/courses/122869/pages/lab-1?module_item_id=6724829">Lab 1</a>.</p>
+<section id="basic-r-operations" class="level2">
+<h2 class="anchored" data-anchor-id="basic-r-operations">Basic R Operations</h2>
+<section id="using-r-as-a-calculator" class="level3">
+<h3 class="anchored" data-anchor-id="using-r-as-a-calculator">Using R as a Calculator</h3>
+<p>R can perform mathematical calculations just like a calculator. Let’s start with some basic arithmetic:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic arithmetic operations</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span>        <span class="co"># Addition</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">-</span> <span class="dv">4</span>       <span class="co"># Subtraction</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> <span class="sc">*</span> <span class="dv">7</span>        <span class="co"># Multiplication</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 42</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">20</span> <span class="sc">/</span> <span class="dv">4</span>       <span class="co"># Division</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">3</span>          <span class="co"># Exponentiation (2 to the power of 3)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">16</span>)     <span class="co"># Square root</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>Notice that R shows you the result immediately. The <code>[1]</code> at the beginning of each result line is R’s way of numbering the output (useful when results have multiple values).</p>
 </section>
-<section id="getting-organized" class="level1">
-<h1>Getting Organized</h1>
-<p>You’ll save yourself a lot of headaches by sticking to this workflow.</p>
-<ol type="1">
-<li>Make a course folder on your computer and call it <code>Quant</code></li>
-<li>Make a subfolder for each project or assignment that requires loading a data file (this one could be <code>lab_one</code>)</li>
-<li>Save the relevant data file <strong>inside this folder</strong></li>
-<li>Use the RStudio menus to “Set Working Directory” to the same subfolder that contains the data file</li>
-<li>Create a new script file inside this folder</li>
-</ol>
-<p>You can check which directory you’re in with the <code>getwd()</code> function. If you type <code>getwd()</code> in the console, you’ll see something like this (yours won’t be exactly the same as mine):</p>
+<section id="order-of-operations" class="level3">
+<h3 class="anchored" data-anchor-id="order-of-operations">Order of Operations</h3>
+<p>R follows the standard mathematical order of operations (PEMDAS):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R follows order of operations</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">3</span>       <span class="co"># Multiplication first: 5 + 6 = 11</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;/home/erik/Repos/quant/lab_one&quot;</code></pre>
+<pre><code>[1] 11</code></pre>
 </div>
-</div>
-<p>In RStudio, you can look in the <code>Files</code> tab to see if the files you need are in the right place. You can also use the <code>list.files()</code> function in the console. I have some extra things in my directory because I’m making this document, but note that <code>labOne.R</code> and <code>labOne.csv</code> are here.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">5</span> <span class="sc">+</span> <span class="dv">2</span>) <span class="sc">*</span> <span class="dv">3</span>     <span class="co"># Parentheses first: 7 * 3 = 21</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;lab_one_walkthrough.qmd&quot;       &quot;lab_one_walkthrough.rmarkdown&quot;
-[3] &quot;labOne.csv&quot;                    &quot;labOne.R&quot;                     </code></pre>
+<pre><code>[1] 21</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>      <span class="co"># Division first: 5 + 3 = 8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>)    <span class="co"># Parentheses first: 10 / 5 = 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
 </div>
 </div>
+<p>Always use parentheses when you’re unsure about the order of operations!</p>
 </section>
-<section id="loading-the-data" class="level1">
-<h1>Loading the Data</h1>
-<p>Now that everything is where it needs to be, we can start writing code in the <code>Source</code> pane in RStudio. You will often hear people refer to this code as a <em>script</em>. Think of it like a list of instructions that you want the computer to follow. The <code>Source</code> pane is different from the <code>Console</code>. The <code>Console</code> is for one-line, on-the-fly command execution. It’s very useful, but you can’t save and share the code you type in the console.</p>
-<p>The first thing we need to do is load the <code>csv</code> file so that we can analyze it. R has a built-in function called <code>read.csv()</code> that lets us import the contents of a <code>csv</code> file. I’m going to store the file contents in an object called <code>df</code>. The name <code>d</code> is meaningless. You can use any name you want.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;labOne.csv&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>In R, <code>&lt;-</code> is called the “assignment operator.” Technically, you <em>could</em> use an equal sign (<code>=</code>), but it’s considered poor form because there are some rare instances in which this could cause errors. <code>d</code> is a variable to which we are <em>assigning</em> the output of the <code>read.csv()</code> function. <code>&quot;labOne.csv&quot;</code> is the <em>argument</em> that we are passing to <code>read.csv()</code>. We can take a look at what <code>d</code> now contains by using the <code>head()</code> function. By default, it will show you the first six rows of the data. Note that <code>head()</code> doesn’t alter the data in any way. You could call the function over and over again, and the contents of <code>d</code> will remain unchanged. Other operation <em>will</em> alter <code>d</code>. I’ll point them out as we go along.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    ID MA.PhD.Program Stats.Anxiety
-1 1144           LSHD             2
-2 1177     Instructor             3
-3 1440           MAHE             4
-4 1545           EFPP             7
-5 1775           MAHE            10
-6 1818           EFPP             6
-                                    Response.re.Standard.deviation Age..months.
-1         I know this well enough that I could teach it to others.          276
-2         I know this well enough that I could teach it to others.          605
-3         I know this well enough that I could teach it to others.          360
-4       I&#39;ve heard of this, but that&#39;s about all I could tell you.          316
-5       I&#39;ve heard of this, but that&#39;s about all I could tell you.          301
-6 I think I understand but would have a tought time explaining it.          288
-  Age..years. Height..inches. Height..feet. US.men.s.shoe.size Commute..miles.
-1       23.00            69.0          5.75                9.5             3.5
-2       50.42            63.5          5.29                4.5             3.0
-3       30.00            68.0          5.67                9.0             1.0
-4       26.33            61.0          5.08                8.0            30.0
-5       25.08            62.0          5.17                9.0             4.0
-6       24.00            67.0          5.58                6.5            33.0
-  Primary.travel Years.of.Schooling Pets Number.of.pets
-1        Bicycle               17.0   No              0
-2            Car               26.0  Yes              3
-3           Walk               20.0  Yes              1
-4            Car               17.0  Yes              2
-5            Bus               20.0   No              0
-6            Car               17.5   No              0
-                            Types.of.pets
-1                                       0
-2                            2 dogs 1 cat
-3                                     Dog
-4 I have a cat (Maple) and a dog (Walter)
-5                                     n/a
-6                                        </code></pre>
-</div>
-</div>
 </section>
-<section id="interlude-comments" class="level1">
-<h1>Interlude: Comments</h1>
-<p>When you’re writing code, you’ll find it very useful to leave notes for yourself and your collaborators along the way. Something that makes perfect sense to you in the moment will look like an alien communication after you’ve been off the project for a few days. Anything that follows a <code>#</code> character is a comment. You can see it, but the computer will ignore it and it won’t affect your results.</p>
+<section id="working-with-objects" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-objects">Working with Objects</h2>
+<section id="creating-variables" class="level3">
+<h3 class="anchored" data-anchor-id="creating-variables">Creating Variables</h3>
+<p>In programming, a variable is like a labeled container that stores information. In R, we create variables using the assignment operator <code>&lt;-</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a comment.</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="do">## This is a comment, too.</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#===========================================================#</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ~~~~~ You can write +ANYTHING+ you want after a `#` ~~~~~ #</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#===========================================================#</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The computer will ignore this line because it starts with `#`</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>But this line will cause an error.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in parse(text = input): &lt;text&gt;:7:5: unexpected symbol
-6: # The computer will ignore this line because it starts with `#`
-7: But this
-       ^</code></pre>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create variables</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>my_number <span class="ot">&lt;-</span> <span class="dv">42</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>my_name <span class="ot">&lt;-</span> <span class="st">&quot;Hamlet&quot;</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>flower_count <span class="ot">&lt;-</span> <span class="dv">150</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Display variable contents</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>my_number</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 42</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>my_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] &quot;Hamlet&quot;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>flower_count</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 150</code></pre>
 </div>
 </div>
+<p>Variable names should be descriptive and follow these rules: - Start with a letter - Can contain letters, numbers, underscores, and periods - Cannot contain spaces - Are case-sensitive (<code>MyVar</code> and <code>myvar</code> are different)</p>
 </section>
-<section id="cleaning-the-data" class="level1">
-<h1>Cleaning the Data</h1>
-<p>The data sets that you will encounter in this course will be very tidy. Much of the data you will work with in real-world projects will be a hot mess. Columns with cryptic names, non-standard characters, missing values, duplicate observations…it’s rough out there. The data set we have here is mostly fine, but I’m not a fan of the column names. Personally, I like column names to be in all caps and I don’t want any punctuation except for underscores (<code>_</code>). In general, do what you prefer or what your collaborators want you to do. (This isn’t the most robust way to rename columns, but it’s fine for now.)</p>
-<p>Note that this is an instance in which we are altering the contents of <code>d</code>.</p>
+<section id="working-with-variables" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-variables">Working with Variables</h3>
+<p>Once you create variables, you can use them in calculations and operations:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(d) <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;ID&quot;</span>,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;PROGRAM&quot;</span>,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;ANXIETY&quot;</span>,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;SD_RESPONSE&quot;</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;AGE_MONTHS&quot;</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;AGE_YEARS&quot;</span>,</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;HEIGHT_INCH&quot;</span>,</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;HEIGHT_FEET&quot;</span>,</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;SHOE_SIZE&quot;</span>,</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;COMMUTE&quot;</span>,</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;TRANSPORTATION&quot;</span>,</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;YEARS_OF_SCHOOL&quot;</span>,</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;PET_YN&quot;</span>,</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;PET_NUMBER&quot;</span>,</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;PET_TYPE&quot;</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use variables in calculations</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>price_per_item <span class="ot">&lt;-</span> <span class="fl">2.50</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>quantity <span class="ot">&lt;-</span> <span class="dv">8</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>total_cost <span class="ot">&lt;-</span> price_per_item <span class="sc">*</span> quantity</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>total_cost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] &quot;ID&quot;              &quot;PROGRAM&quot;         &quot;ANXIETY&quot;         &quot;SD_RESPONSE&quot;    
- [5] &quot;AGE_MONTHS&quot;      &quot;AGE_YEARS&quot;       &quot;HEIGHT_INCH&quot;     &quot;HEIGHT_FEET&quot;    
- [9] &quot;SHOE_SIZE&quot;       &quot;COMMUTE&quot;         &quot;TRANSPORTATION&quot;  &quot;YEARS_OF_SCHOOL&quot;
-[13] &quot;PET_YN&quot;          &quot;PET_NUMBER&quot;      &quot;PET_TYPE&quot;       </code></pre>
+<pre><code>[1] 20</code></pre>
 </div>
-</div>
-</section>
-<section id="descriptive-stats" class="level1">
-<h1>Descriptive Stats</h1>
-<p>Now, we can start doing some basic descriptive statistics. We’ll follow the questions that were in the Lab One Practice document on Canvas.</p>
-<section id="what-is-the-mean-age-in-years-for-everyone-in-the-data-set" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-the-mean-age-in-years-for-everyone-in-the-data-set">What is the mean age in years for <em>everyone</em> in the data set?</h3>
-<p>As you may have guessed, R has a built-in function called <code>mean()</code>. There are a few different ways to get the same result. The first approach is the most common, but the others can be useful in certain scenarios.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(d<span class="sc">$</span>AGE_YEARS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You can update variables</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>quantity <span class="ot">&lt;-</span> quantity <span class="sc">+</span> <span class="dv">2</span>  <span class="co"># Add 2 more items</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>quantity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 30.19424</code></pre>
+<pre><code>[1] 10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(d[[<span class="st">&quot;AGE_YEARS&quot;</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create new variables from existing ones</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>tax_rate <span class="ot">&lt;-</span> <span class="fl">0.08</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>total_with_tax <span class="ot">&lt;-</span> total_cost <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> tax_rate)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>total_with_tax</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 30.19424</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(d[, <span class="st">&quot;AGE_YEARS&quot;</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 30.19424</code></pre>
-</div>
-</div>
-<p>Let’s make a brief detour here to look at variables in R. There are many times when we want to get the mean of a column and use it in other calculations. To do this, we almost always want to store the value in a variable. We use the assignment operator (<code>&lt;-</code>) to do this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">mean</span>(d<span class="sc">$</span>AGE_YEARS)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 30.19424</code></pre>
-</div>
-</div>
-<p>We can treat the variable <code>x</code> like a number:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">45</span> <span class="sc">-</span> x) <span class="sc">/</span> <span class="fu">nrow</span>(d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4486593</code></pre>
-</div>
-</div>
-<p>And we can pass the value contained in <code>x</code> around to other variables:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 30.19424</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 60.38848</code></pre>
+<pre><code>[1] 21.6</code></pre>
 </div>
 </div>
 </section>
-<section id="what-is-the-mean-age-for-students-in-the-data-set" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-the-mean-age-for-students-in-the-data-set">What is the mean age for <em>students</em> in the data set?</h3>
-<p>Here, we are only interested in a subset of our data. There are several ways to approach this. One way is to make a <em>dummy</em> variable. Dummy variables (sometimes called <em>indicator</em> variables) have a value of 1 or 0. They are very useful, so it will be instructive to introduce them here. For this question, we can make an <code>IS_STUDENT</code> dummy variable based on the <code>PROGRAM</code> variable. This variable will be 1 for every observation where <code>PROGRAM</code> does <em>not</em> equal “Instructor”. It’s not very exciting here because there is only one instructor, but I promise that you will use dummy variables a lot in your quantitative analyses.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>d<span class="sc">$</span>IS_STUDENT <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(d<span class="sc">$</span>PROGRAM <span class="sc">!=</span> <span class="st">&quot;Instructor&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># If PROGRAM isn&#39;t &quot;Instructor&quot;, then put 1. Otherwise, put 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now, we can get the mean age for just the students a couple of different ways. One way is to specify a subset of the data:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>student_mean_one <span class="ot">&lt;-</span> <span class="fu">mean</span>(d<span class="sc">$</span>AGE_YEARS[d<span class="sc">$</span>IS_STUDENT <span class="sc">==</span> <span class="dv">1</span>])</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the mean of the AGE_YEARS column for the rows where IS_STUDENT is 1, and store the result.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Another option is to make a new data frame that contains just the students:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>students <span class="ot">&lt;-</span> d[d<span class="sc">$</span>IS_STUDENT <span class="sc">==</span> <span class="dv">1</span>, ]</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>student_mean_two <span class="ot">&lt;-</span> <span class="fu">mean</span>(students<span class="sc">$</span>AGE_YEARS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>If we did this right, the results should be the same:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>student_mean_one</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 29.56219</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>student_mean_two</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 29.56219</code></pre>
-</div>
-</div>
-<p>I prefer the second approach. It’s a little more typing, but it’s much easier (in my opinion) to see what’s happening. When the data sets get larger and the computations get more complex, you may find that being verbose and clear is better than being concise and cryptic.</p>
 </section>
-<section id="report-the-values-requested-below-for-the-following-variables-for-everyone-in-the-data-set.-round-to-two-decimal-places-when-it-makes-sense." class="level3">
-<h3 class="anchored" data-anchor-id="report-the-values-requested-below-for-the-following-variables-for-everyone-in-the-data-set.-round-to-two-decimal-places-when-it-makes-sense.">Report the values requested below for the following variables (for everyone) in the data set. Round to two decimal places when it makes sense.</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: left;">Age (years)</th>
-<th style="text-align: left;">Height (feet)</th>
-<th style="text-align: left;">Commute</th>
-<th style="text-align: left;">Number of Pets</th>
-<th style="text-align: left;">Stats Anxiety</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>Mean</strong></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Median</strong></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Mode(s)</strong></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>(Population) Standard Deviation</strong></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Min</strong></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Max</strong></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-</tbody>
-</table>
-<p>Some of you may have been introduced to some R libraries that automatically generate summary tables. Those are great, and I encourage you to use them. If you’re interested in going a bit deeper with R, I suggest doing this sort of thing the hard way a few times. Let’s get the means first.</p>
-<p>You’ve already seen how to use the <code>mean()</code> function. I’ll show you one of many (and I really mean many) ways to get the mean of multiple columns at once. If you want to understand the way I do it below, then I encourage you to look up “for-loops” in R. Every programming language has a way to do for-loops. Don’t worry if you don’t understand this code. It’s mainly for demonstrative purposes.</p>
+<section id="data-types" class="level2">
+<h2 class="anchored" data-anchor-id="data-types">Data Types</h2>
+<p>R works with different types of data. Understanding data types is important because they determine what operations you can perform.</p>
+<section id="numeric-data" class="level3">
+<h3 class="anchored" data-anchor-id="numeric-data">Numeric Data</h3>
+<p>Numbers can be integers (whole numbers) or doubles (decimal numbers). By default, R stores whole numbers as decimal numbers for precision in mathematical operations. You can force R to use an integer by appending “L” to a number, but you’ll rarely need to do this.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>cols_to_keep <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;AGE_YEARS&quot;</span>, <span class="st">&quot;HEIGHT_FEET&quot;</span>, <span class="st">&quot;COMMUTE&quot;</span>, <span class="st">&quot;PET_NUMBER&quot;</span>, <span class="st">&quot;ANXIETY&quot;</span>)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (column <span class="cf">in</span> cols_to_keep) {</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;The mean of&quot;</span>, column, <span class="st">&quot;is&quot;</span>, <span class="fu">round</span>(<span class="fu">mean</span>(d[[column]]), <span class="dv">2</span>), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numeric data examples</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="dv">30</span>L             <span class="co"># Integer (explicitly)</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>height <span class="ot">&lt;-</span> <span class="fl">5.8</span>          <span class="co"># Double (decimal)</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>temperature <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">3.2</span>    <span class="co"># Can be negative</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Check what type of data you have</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>The mean of AGE_YEARS is 30.19 
-The mean of HEIGHT_FEET is 5.52 
-The mean of COMMUTE is 15.36 
-The mean of PET_NUMBER is 1.15 
-The mean of ANXIETY is 5.24 </code></pre>
+<pre><code>[1] &quot;integer&quot;</code></pre>
 </div>
-</div>
-<p>We can use the same logic for the median:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (column <span class="cf">in</span> cols_to_keep) {</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;The median of&quot;</span>, column, <span class="st">&quot;is&quot;</span>, <span class="fu">round</span>(<span class="fu">median</span>(d[[column]]), <span class="dv">2</span>), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>The median of AGE_YEARS is 26.67 
-The median of HEIGHT_FEET is 5.5 
-The median of COMMUTE is 11 
-The median of PET_NUMBER is 1 
-The median of ANXIETY is 5 </code></pre>
-</div>
-</div>
-<p>There is no built-in function for mode in R, so we have to roll our own:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>mode <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  uniqx <span class="ot">&lt;-</span> <span class="fu">unique</span>(x)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  uniqx[<span class="fu">which.max</span>(<span class="fu">tabulate</span>(<span class="fu">match</span>(x, uniqx)))]</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (column <span class="cf">in</span> cols_to_keep) {</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;The mode of&quot;</span>, column, <span class="st">&quot;is&quot;</span>, <span class="fu">round</span>(<span class="fu">mode</span>(d[[column]]), <span class="dv">2</span>), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>The mode of AGE_YEARS is 27.58 
-The mode of HEIGHT_FEET is 5.33 
-The mode of COMMUTE is 3 
-The mode of PET_NUMBER is 0 
-The mode of ANXIETY is 7 </code></pre>
-</div>
-</div>
-<p>There is also no built-in function for population standard deviation in R. The sample standard deviation is used much more often, but our book (and most books, I think) introduce population parameters before sample statistics. Don’t worry if the last sentence is meaningless right now. You’ll learn about the difference between parameters and statistics in the coming weeks.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>sd.p <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sd</span>(x)<span class="sc">*</span><span class="fu">sqrt</span>((<span class="fu">length</span>(x)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">/</span><span class="fu">length</span>(x))</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (column <span class="cf">in</span> cols_to_keep) {</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;The population sd of&quot;</span>, column, <span class="st">&quot;is&quot;</span>, <span class="fu">round</span>(<span class="fu">sd.p</span>(d[[column]]), <span class="dv">2</span>), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>The population sd of AGE_YEARS is 8.71 
-The population sd of HEIGHT_FEET is 0.32 
-The population sd of COMMUTE is 14.42 
-The population sd of PET_NUMBER is 1.78 
-The population sd of ANXIETY is 2.41 </code></pre>
-</div>
-</div>
-<p>There are built-in functions for minimum and maximum. They work as you might expect:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (column <span class="cf">in</span> cols_to_keep) {</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;The minimum of&quot;</span>, column, <span class="st">&quot;is&quot;</span>, <span class="fu">round</span>(<span class="fu">min</span>(d[[column]]), <span class="dv">2</span>), <span class="st">&quot;and the maximum is&quot;</span>, <span class="fu">round</span>(<span class="fu">max</span>(d[[column]]), <span class="dv">2</span>), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>The minimum of AGE_YEARS is 21.67 and the maximum is 53.08 
-The minimum of HEIGHT_FEET is 5 and the maximum is 6.5 
-The minimum of COMMUTE is 0.5 and the maximum is 55 
-The minimum of PET_NUMBER is 0 and the maximum is 9 
-The minimum of ANXIETY is 1 and the maximum is 10 </code></pre>
-</div>
-</div>
-<p>We can check most of these values with the built-in <code>summary()</code> function:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(d[cols_to_keep])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   AGE_YEARS      HEIGHT_FEET      COMMUTE        PET_NUMBER   
- Min.   :21.67   Min.   :5.00   Min.   : 0.50   Min.   :0.000  
- 1st Qu.:24.25   1st Qu.:5.30   1st Qu.: 3.00   1st Qu.:0.000  
- Median :26.67   Median :5.50   Median :11.00   Median :1.000  
- Mean   :30.19   Mean   :5.52   Mean   :15.36   Mean   :1.152  
- 3rd Qu.:32.17   3rd Qu.:5.75   3rd Qu.:30.00   3rd Qu.:2.000  
- Max.   :53.08   Max.   :6.50   Max.   :55.00   Max.   :9.000  
-    ANXIETY      
- Min.   : 1.000  
- 1st Qu.: 3.000  
- Median : 5.000  
- Mean   : 5.242  
- 3rd Qu.: 7.000  
- Max.   :10.000  </code></pre>
-</div>
-</div>
-<p>But, we wanted a table, so…</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>summary_stats <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Statistic =</span> <span class="fu">c</span>(<span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;Median&quot;</span>, <span class="st">&quot;Mode&quot;</span>, <span class="st">&quot;Population SD&quot;</span>, <span class="st">&quot;Min&quot;</span>, <span class="st">&quot;Max&quot;</span>)</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (col <span class="cf">in</span> cols_to_keep) {</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>  summary_stats[[col]] <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">mean</span>(d[[col]]), <span class="dv">2</span>),</span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">median</span>(d[[col]]), <span class="dv">2</span>),</span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">mode</span>(d[[col]]), <span class="dv">2</span>),</span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">sd.p</span>(d[[col]]), <span class="dv">2</span>),</span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">min</span>(d[[col]]), <span class="dv">2</span>),</span>
-<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">max</span>(d[[col]]), <span class="dv">2</span>)</span>
-<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>summary_stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      Statistic AGE_YEARS HEIGHT_FEET COMMUTE PET_NUMBER ANXIETY
-1          Mean     30.19        5.52   15.36       1.15    5.24
-2        Median     26.67        5.50   11.00       1.00    5.00
-3          Mode     27.58        5.33    3.00       0.00    7.00
-4 Population SD      8.71        0.32   14.42       1.78    2.41
-5           Min     21.67        5.00    0.50       0.00    1.00
-6           Max     53.08        6.50   55.00       9.00   10.00</code></pre>
+<pre><code>[1] &quot;double&quot;</code></pre>
 </div>
 </div>
 </section>
-<section id="write-a-brief-paragraph-about-the-descriptive-statistics-you-reported-in-the-table.-this-is-a-skill.-its-a-balance-between-not-going-number-by-number-dont-describe-every-single-number-in-the-table-and-telling-the-story-of-the-data." class="level3">
-<h3 class="anchored" data-anchor-id="write-a-brief-paragraph-about-the-descriptive-statistics-you-reported-in-the-table.-this-is-a-skill.-its-a-balance-between-not-going-number-by-number-dont-describe-every-single-number-in-the-table-and-telling-the-story-of-the-data.">Write a brief paragraph about the descriptive statistics you reported in the table. This is a skill. It’s a balance between not going number by number (don’t describe every single number in the table) and telling the “story” of the data.</h3>
-<p>Full disclosure: I’m really bad at writing results. I also find them incredibly tedious to read, but this is the life we chose.</p>
-<blockquote class="blockquote">
-<p>The mean age for people in EDUC 5716 was about 30 years old. The median is quite a bit lower at just under 27, suggesting that there may be some outliers pulling the mean up. The mean height for the class is about 5’6” and is quite similar to the median. The modal height for the class is 64. Commute distance among this class had a wide range of 54.5 miles, with a minimum commute of under 1 mile and a maximum of 55 miles. Like age, it seems likely that some outliers pulled the mean of around 15 miles several miles higher than the median of 11. In terms of pets, the most common response among this group was no pets, with a mean very near 1. The standard deviation of 1.78 seems quite large, reflecting the fact that some students in the course had many more pets, with the maximum reported value of 9! Finally, in terms of the stats anxiety scale, it is interesting that range reflects the lowest and highest possible values on the scale (1, 10); recall that these were the values when you filled the survey out yourselves! The mean and median were right around the middle point of the scale, 5, with the modal response being 7, suggesting that quite a few people entered the course with high levels of anxiety about statistics.</p>
-</blockquote>
-</section>
-<section id="which-two-variables-are-the-most-skewed-how-do-you-know" class="level3">
-<h3 class="anchored" data-anchor-id="which-two-variables-are-the-most-skewed-how-do-you-know">Which two variables are the most skewed? How do you know?</h3>
-<p>Age and commute are the most skewed. The mean and the median are furthest apart.</p>
-</section>
-<section id="use-r-to-calculate-the-mean-median-and-standard-deviation-for-the-following-data-set-7-8-10-6-5" class="level3">
-<h3 class="anchored" data-anchor-id="use-r-to-calculate-the-mean-median-and-standard-deviation-for-the-following-data-set-7-8-10-6-5">Use R to calculate the mean, median, and standard deviation for the following data set: 7, 8, 10, 6, 5</h3>
-<p>You can use the built-in functions to do this. We can also use what we learn in class to do it from scratch.</p>
+<section id="character-data-text" class="level3">
+<h3 class="anchored" data-anchor-id="character-data-text">Character Data (Text)</h3>
+<p>Text data is called “character” data in R and must be enclosed in quotes:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The data set</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">5</span>)</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean</span></span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>x_sum    <span class="ot">&lt;-</span> <span class="fu">sum</span>(x)</span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>n        <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>mean_val <span class="ot">&lt;-</span> x_sum <span class="sc">/</span> n</span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the median</span></span>
-<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>sorted_x    <span class="ot">&lt;-</span> <span class="fu">sort</span>(x)</span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>median_val  <span class="ot">&lt;-</span> sorted_x[(n <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span>]</span>
-<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the standard deviation (sample)</span></span>
-<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="co"># First, calculate the squared differences from the mean</span></span>
-<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>squared_differences <span class="ot">&lt;-</span> (x <span class="sc">-</span> mean_val)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, calculate the variance</span></span>
-<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>variance <span class="ot">&lt;-</span> <span class="fu">sum</span>(squared_differences) <span class="sc">/</span> (n <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Then, take the square root of the variance</span></span>
-<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a>sd_val <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(variance)</span>
-<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Mean:&quot;</span>, mean_val, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Character data examples</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>first_name <span class="ot">&lt;-</span> <span class="st">&quot;Juliet&quot;</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>last_name <span class="ot">&lt;-</span> <span class="st">&quot;Capulet&quot;</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>full_name <span class="ot">&lt;-</span> <span class="fu">paste</span>(first_name, last_name)  <span class="co"># Combine text</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>full_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Mean: 7.2 </code></pre>
+<pre><code>[1] &quot;Juliet Capulet&quot;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Median:&quot;</span>, median_val, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the data type</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(first_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Median: 7 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Standard Deviation:&quot;</span>, sd_val, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Standard Deviation: 1.923538 </code></pre>
-</div>
-</div>
-<p>We can check if this is right:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 7.2</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 7</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.923538</code></pre>
+<pre><code>[1] &quot;character&quot;</code></pre>
 </div>
 </div>
 </section>
-<section id="use-r-to-calculate-the-mean-median-and-standard-deviation-for-the-following-data-set-7-8-10-6-5-100" class="level3">
-<h3 class="anchored" data-anchor-id="use-r-to-calculate-the-mean-median-and-standard-deviation-for-the-following-data-set-7-8-10-6-5-100">Use R to calculate the mean, median, and standard deviation for the following data set: 7, 8, 10, 6, 5, 100</h3>
+<section id="logical-data-truefalse" class="level3">
+<h3 class="anchored" data-anchor-id="logical-data-truefalse">Logical Data (True/False)</h3>
+<p>Logical data represents yes/no, true/false conditions:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">100</span>)</span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Logical data examples</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>is_student <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>is_working <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>has_license <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Logical operations</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>is_adult <span class="ot">&lt;-</span> age <span class="sc">&gt;=</span> <span class="dv">18</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>is_adult</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 22.66667</code></pre>
+<pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(is_student)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 7.5</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 37.92449</code></pre>
+<pre><code>[1] &quot;logical&quot;</code></pre>
 </div>
 </div>
 </section>
-<section id="how-and-why-are-the-results-different-when-we-add-an-extreme-value" class="level3">
-<h3 class="anchored" data-anchor-id="how-and-why-are-the-results-different-when-we-add-an-extreme-value">How and why are the results different when we add an extreme value?</h3>
-<p><em>I’ll let you handle this one on your own.</em></p>
+</section>
+<section id="exploring-the-iris-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-the-iris-dataset">Exploring the Iris Dataset</h2>
+<p>Now let’s use our programming skills to explore the iris dataset:</p>
+<section id="basic-dataset-information" class="level3">
+<h3 class="anchored" data-anchor-id="basic-dataset-information">Basic Dataset Information</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get basic information about the dataset</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(iris)      <span class="co"># Number of rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 150</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(iris)      <span class="co"># Number of columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(iris)       <span class="co"># Dimensions (rows, columns)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 150   5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(iris)     <span class="co"># Column names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] &quot;Sepal.Length&quot; &quot;Sepal.Width&quot;  &quot;Petal.Length&quot; &quot;Petal.Width&quot;  &quot;Species&quot;     </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(iris)       <span class="co"># Structure of the data</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&#39;data.frame&#39;:   150 obs. of  5 variables:
+ $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+ $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+ $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+ $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+ $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+</div>
+</div>
+<p>The <code>str()</code> function is particularly useful—it shows you the structure of your data, including variable types and the first few values.</p>
+</section>
+<section id="accessing-parts-of-the-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="accessing-parts-of-the-dataset">Accessing Parts of the Dataset</h3>
+<p>You can access specific columns (variables) in your dataset using the <code>$</code> operator:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access individual columns</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>sepal_lengths <span class="ot">&lt;-</span> iris<span class="sc">$</span>Sepal.Length</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>petal_lengths <span class="ot">&lt;-</span> iris<span class="sc">$</span>Petal.Length</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Look at the first 10 values</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>sepal_lengths[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>petal_lengths[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5</code></pre>
+</div>
+</div>
+<p>The square brackets <code>[1:10]</code> tell R to show positions 1 through 10. This is called indexing.</p>
+</section>
+<section id="basic-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="basic-statistics">Basic Statistics</h3>
+<p>R makes it easy to calculate basic statistics:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate basic statistics for sepal length</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length)      <span class="co"># Average</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.843333</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(iris<span class="sc">$</span>Sepal.Length)    <span class="co"># Middle value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(iris<span class="sc">$</span>Sepal.Length)       <span class="co"># Minimum value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(iris<span class="sc">$</span>Sepal.Length)       <span class="co"># Maximum value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.9</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(iris<span class="sc">$</span>Sepal.Length)     <span class="co"># Minimum and maximum</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.3 7.9</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(iris<span class="sc">$</span>Sepal.Length)        <span class="co"># Standard deviation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8280661</code></pre>
+</div>
+</div>
+</section>
+<section id="summary-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="summary-statistics">Summary Statistics</h3>
+<p>The <code>summary()</code> function gives you a quick overview of each variable:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get summary statistics for the entire dataset</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+ Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+ 1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+ Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+ Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+ 3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+ Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+       Species  
+ setosa    :50  
+ versicolor:50  
+ virginica :50  
+                
+                
+                </code></pre>
+</div>
+</div>
+<p>This shows you the minimum, first quartile, median, mean, third quartile, and maximum for numeric variables. For categorical variables (like Species), it shows counts.</p>
+</section>
+</section>
+<section id="working-with-vectors" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-vectors">Working with Vectors</h2>
+<p>A vector is a collection of values of the same type. Much of R’s power comes from working with vectors:</p>
+<section id="creating-vectors" class="level3">
+<h3 class="anchored" data-anchor-id="creating-vectors">Creating Vectors</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create vectors using c() function</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">50</span>, <span class="dv">22</span>, <span class="dv">35</span>, <span class="dv">28</span>, <span class="dv">45</span>)</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Hamlet&quot;</span>, <span class="st">&quot;Lear&quot;</span>, <span class="st">&quot;Romeo&quot;</span>, <span class="st">&quot;Othello&quot;</span>, <span class="st">&quot;Juliet&quot;</span>, <span class="st">&quot;Macbeth&quot;</span>)</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>heights <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">5.8</span>, <span class="fl">5.4</span>, <span class="fl">6.1</span>, <span class="fl">5.9</span>, <span class="fl">5.2</span>, <span class="fl">5.7</span>)</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Display vectors</span></span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>ages</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30 50 22 35 28 45</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] &quot;Hamlet&quot;  &quot;Lear&quot;    &quot;Romeo&quot;   &quot;Othello&quot; &quot;Juliet&quot;  &quot;Macbeth&quot;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>heights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.8 5.4 6.1 5.9 5.2 5.7</code></pre>
+</div>
+</div>
+</section>
+<section id="vector-operations" class="level3">
+<h3 class="anchored" data-anchor-id="vector-operations">Vector Operations</h3>
+<p>You can perform operations on entire vectors at once:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mathematical operations on vectors</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>ages_in_months <span class="ot">&lt;-</span> ages <span class="sc">*</span> <span class="dv">12</span></span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>ages_in_months</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 360 600 264 420 336 540</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert heights from feet to inches</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>heights_inches <span class="ot">&lt;-</span> heights <span class="sc">*</span> <span class="dv">12</span></span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>heights_inches</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 69.6 64.8 73.2 70.8 62.4 68.4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Logical operations</span></span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>is_adult <span class="ot">&lt;-</span> ages <span class="sc">&gt;=</span> <span class="dv">18</span></span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>is_adult</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># How many adults?</span></span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(is_adult)  <span class="co"># TRUE counts as 1, FALSE as 0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+</div>
+</section>
+<section id="vector-indexing" class="level3">
+<h3 class="anchored" data-anchor-id="vector-indexing">Vector Indexing</h3>
+<p>You can access specific elements of a vector:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access specific elements</span></span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>first_age <span class="ot">&lt;-</span> ages[<span class="dv">1</span>]        <span class="co"># First element</span></span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>last_age <span class="ot">&lt;-</span> ages[<span class="dv">6</span>]         <span class="co"># Sixth element</span></span>
+<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a>first_three <span class="ot">&lt;-</span> ages[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]    <span class="co"># First three elements</span></span>
+<span id="cb89-5"><a href="#cb89-5" aria-hidden="true" tabindex="-1"></a>selected <span class="ot">&lt;-</span> ages[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)] <span class="co"># Elements 1, 3, and 5</span></span>
+<span id="cb89-6"><a href="#cb89-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-7"><a href="#cb89-7" aria-hidden="true" tabindex="-1"></a>first_age</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>first_three</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30 50 22</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>selected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30 22 28</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="simple-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="simple-data-analysis">Simple Data Analysis</h2>
+<p>Let’s put everything together to analyze the iris dataset:</p>
+<section id="comparing-species" class="level3">
+<h3 class="anchored" data-anchor-id="comparing-species">Comparing Species</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Look at the species in our dataset</span></span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(iris<span class="sc">$</span>Species)        <span class="co"># What species do we have?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] setosa     versicolor virginica 
+Levels: setosa versicolor virginica</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(iris<span class="sc">$</span>Species)         <span class="co"># How many of each species?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    setosa versicolor  virginica 
+        50         50         50 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate average petal length for each species</span></span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>setosa_petals <span class="ot">&lt;-</span> iris<span class="sc">$</span>Petal.Length[iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span>]</span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a>versicolor_petals <span class="ot">&lt;-</span> iris<span class="sc">$</span>Petal.Length[iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">&quot;versicolor&quot;</span>]</span>
+<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a>virginica_petals <span class="ot">&lt;-</span> iris<span class="sc">$</span>Petal.Length[iris<span class="sc">$</span>Species <span class="sc">==</span> <span class="st">&quot;virginica&quot;</span>]</span>
+<span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-6"><a href="#cb99-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(setosa_petals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.462</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(versicolor_petals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.26</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(virginica_petals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.552</code></pre>
+</div>
+</div>
+</section>
+<section id="finding-interesting-patterns" class="level3">
+<h3 class="anchored" data-anchor-id="finding-interesting-patterns">Finding Interesting Patterns</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the largest and smallest flowers</span></span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>largest_sepal <span class="ot">&lt;-</span> <span class="fu">max</span>(iris<span class="sc">$</span>Sepal.Length)</span>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a>smallest_sepal <span class="ot">&lt;-</span> <span class="fu">min</span>(iris<span class="sc">$</span>Sepal.Length)</span>
+<span id="cb105-4"><a href="#cb105-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-5"><a href="#cb105-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Largest sepal length:&quot;</span>, largest_sepal, <span class="st">&quot;cm</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Largest sepal length: 7.9 cm</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Smallest sepal length:&quot;</span>, smallest_sepal, <span class="st">&quot;cm</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Smallest sepal length: 4.3 cm</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Which flowers have the largest and smallest sepals?</span></span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(iris<span class="sc">$</span>Sepal.Length <span class="sc">==</span> largest_sepal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 132</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(iris<span class="sc">$</span>Sepal.Length <span class="sc">==</span> smallest_sepal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What species are they?</span></span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>iris<span class="sc">$</span>Species[iris<span class="sc">$</span>Sepal.Length <span class="sc">==</span> largest_sepal]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] virginica
+Levels: setosa versicolor virginica</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>iris<span class="sc">$</span>Species[iris<span class="sc">$</span>Sepal.Length <span class="sc">==</span> smallest_sepal]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] setosa
+Levels: setosa versicolor virginica</code></pre>
+</div>
+</div>
+</section>
+<section id="creating-new-variables" class="level3">
+<h3 class="anchored" data-anchor-id="creating-new-variables">Creating New Variables</h3>
+<p>You can create new variables based on existing ones:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new variable: sepal area (length × width)</span></span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>iris<span class="sc">$</span>Sepal.Area <span class="ot">&lt;-</span> iris<span class="sc">$</span>Sepal.Length <span class="sc">*</span> iris<span class="sc">$</span>Sepal.Width</span>
+<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new variable: petal area</span></span>
+<span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a>iris<span class="sc">$</span>Petal.Area <span class="ot">&lt;-</span> iris<span class="sc">$</span>Petal.Length <span class="sc">*</span> iris<span class="sc">$</span>Petal.Width</span>
+<span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-7"><a href="#cb117-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Look at our new variables</span></span>
+<span id="cb117-8"><a href="#cb117-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris<span class="sc">$</span>Sepal.Area)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 17.85 14.70 15.04 14.26 18.00 21.06</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iris<span class="sc">$</span>Sepal.Area)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  10.00   15.66   17.66   17.82   20.32   30.02 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="functions-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="functions-in-r">Functions in R</h2>
+<p>Functions are pre-written pieces of code that perform specific tasks. We’ve already used many functions like <code>mean()</code>, <code>max()</code>, and <code>summary()</code>.</p>
+<section id="using-functions" class="level3">
+<h3 class="anchored" data-anchor-id="using-functions">Using Functions</h3>
+<p>Every function has a name followed by parentheses. Inside the parentheses, you put the inputs (called arguments):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function structure: function_name(arguments)</span></span>
+<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length)           <span class="co"># One argument</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.843333</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">3.14159</span>, <span class="at">digits =</span> <span class="dv">2</span>)        <span class="co"># Two arguments</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.14</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;Hello&quot;</span>, <span class="st">&quot;World&quot;</span>, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>) <span class="co"># Multiple arguments</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] &quot;Hello World&quot;</code></pre>
+</div>
+</div>
+</section>
+<section id="getting-help" class="level3">
+<h3 class="anchored" data-anchor-id="getting-help">Getting Help</h3>
+<p>When you need help with a function, use the <code>?</code> operator:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get help for functions (uncomment to run)</span></span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ?mean</span></span>
+<span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ?summary</span></span>
+<span id="cb127-4"><a href="#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ?paste</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This opens the help documentation, which explains what the function does and what arguments it accepts.</p>
+</section>
+</section>
+<section id="comments-and-good-practices" class="level2">
+<h2 class="anchored" data-anchor-id="comments-and-good-practices">Comments and Good Practices</h2>
+<section id="writing-comments" class="level3">
+<h3 class="anchored" data-anchor-id="writing-comments">Writing Comments</h3>
+<p>Comments are notes you write in your code to explain what you’re doing. They start with <code>#</code> and are ignored by R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a comment - R ignores this line</span></span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span>  <span class="co"># You can also put comments at the end of lines</span></span>
+<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the average sepal length</span></span>
+<span id="cb128-5"><a href="#cb128-5" aria-hidden="true" tabindex="-1"></a>average_sepal <span class="ot">&lt;-</span> <span class="fu">mean</span>(iris<span class="sc">$</span>Sepal.Length)</span>
+<span id="cb128-6"><a href="#cb128-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-7"><a href="#cb128-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the result</span></span>
+<span id="cb128-8"><a href="#cb128-8" aria-hidden="true" tabindex="-1"></a>average_sepal</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.843333</code></pre>
+</div>
+</div>
+<p>Good comments explain <em>why</em> you’re doing something, not just <em>what</em> you’re doing.</p>
+</section>
+<section id="code-organization" class="level3">
+<h3 class="anchored" data-anchor-id="code-organization">Code Organization</h3>
+<p>Keep your code organized and readable:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Good: Clear variable names and spacing</span></span>
+<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a>flower_count <span class="ot">&lt;-</span> <span class="fu">nrow</span>(iris)</span>
+<span id="cb130-3"><a href="#cb130-3" aria-hidden="true" tabindex="-1"></a>average_petal_length <span class="ot">&lt;-</span> <span class="fu">mean</span>(iris<span class="sc">$</span>Petal.Length)</span>
+<span id="cb130-4"><a href="#cb130-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb130-5"><a href="#cb130-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Less good: Unclear names and cramped</span></span>
+<span id="cb130-6"><a href="#cb130-6" aria-hidden="true" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="fu">nrow</span>(iris)</span>
+<span id="cb130-7"><a href="#cb130-7" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">mean</span>(iris<span class="sc">$</span>Petal.Length)</span>
+<span id="cb130-8"><a href="#cb130-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb130-9"><a href="#cb130-9" aria-hidden="true" tabindex="-1"></a>flower_count</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 150</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>average_petal_length</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.758</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="exercise-problems" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-problems">Exercise Problems</h2>
+<p><strong>Exercise 1</strong>: Create three variables: your age, your height (in feet), and your favorite color. Display each variable.</p>
+<p><strong>Exercise 2</strong>: Convert your height from feet to inches and store it in a new variable called <code>height_inches</code>.</p>
+<p><strong>Exercise 3</strong>: Using the iris dataset, find the average sepal width for each species.</p>
+<p><strong>Exercise 4</strong>: Create a new variable in the iris dataset called <code>Petal.Ratio</code> that equals petal length divided by petal width.</p>
+<p><strong>Exercise 5</strong>: How many flowers in the iris dataset have sepal length greater than 6.0 cm?</p>
+</section>
+<section id="key-points-to-remember" class="level2">
+<h2 class="anchored" data-anchor-id="key-points-to-remember">Key Points to Remember</h2>
+<p>As you continue learning R, keep these essential points in mind:</p>
+<ul>
+<li><strong>R is case-sensitive</strong> - <code>Data</code> and <code>data</code> are different</li>
+<li><strong>Use the assignment operator <code>&lt;-</code></strong> to create variables (not <code>=</code>)</li>
+<li><strong>Use descriptive variable names</strong> - <code>student_age</code> is better than <code>x</code></li>
+<li><strong>Comments are your friend</strong> - use <code>#</code> to explain your code</li>
+<li><strong>Functions need parentheses</strong> - even if they take no arguments</li>
+<li><strong>Vectors are fundamental</strong> - R is designed to work with collections of data</li>
+<li><strong>The <code>$</code> operator</strong> accesses columns in datasets</li>
+<li><strong>Square brackets <code>[]</code></strong> access specific elements or positions</li>
+<li><strong>Practice regularly</strong> - programming is a skill that improves with practice</li>
+<li><strong>Don’t be afraid to experiment</strong> - R is forgiving and you can’t break anything</li>
+<li><strong>Use <code>?function_name</code></strong> to get help when you’re stuck</li>
+</ul>
+<p>R has a learning curve, but it’s incredibly rewarding once you get the hang of it. Every expert started as a beginner, so be patient with yourself and keep practicing!</p>
 </section>
 </section>
 

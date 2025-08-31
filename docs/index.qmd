@@ -4,9 +4,9 @@ title: ""
 
 ### Labs
 
-[Lab #1](lab_one.html)
+[Lab 1](lab_01.html)
 
-[Lab #2](lab_two.html)
+[Lab 2](lab_02.html)
 
 ### Resources
 
