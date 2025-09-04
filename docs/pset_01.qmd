@@ -1,0 +1,373 @@
+---
+title: "PSET 1 Practice"
+author: "Erik Whitfield"
+date: "`r Sys.Date()`"
+format:
+  html:
+    theme: solar
+    toc: true
+    self-contained: true
+---
+
+# Problem Set 1 Practice
+
+## Introduction
+
+This lesson will teach you how to calculate descriptive statistics and create visualizations in R.
+You'll learn the skills needed for exploring and summarizing data, including measures of central tendency, variability, and creating basic visualizations.
+
+We'll work with the built-in `mtcars` dataset.
+
+```{r}
+# Load and examine the mtcars dataset
+data(mtcars)
+head(mtcars)
+str(mtcars)
+```
+
+## Calculating Means for Different Groups
+
+You'll often need to calculate means for an entire dataset and for specific subgroups. Let's practice both.
+
+### Mean for the Entire Dataset
+
+```{r}
+# Calculate the mean horsepower for all cars
+mean_hp_all <- mean(mtcars$hp)
+mean_hp_all
+```
+
+### Mean for Specific Groups
+
+To calculate means for specific groups, we use logical indexing to filter the data:
+
+```{r}
+# Calculate mean horsepower for manual transmission cars (am = 1)
+manual_cars <- mtcars$hp[mtcars$am == 1]
+mean_hp_manual <- mean(manual_cars)
+mean_hp_manual
+
+# Alternative approach using logical indexing directly
+mean_hp_manual_alt <- mean(mtcars$hp[mtcars$am == 1])
+mean_hp_manual_alt
+
+# Calculate mean horsepower for automatic transmission cars (am = 0)
+mean_hp_automatic <- mean(mtcars$hp[mtcars$am == 0])
+mean_hp_automatic
+```
+
+## Descriptive Statistics
+
+Let's learn how to calculate mean, median, mode, standard deviation, and range.
+
+### Individual Statistics Functions
+
+```{r}
+# Mean - average value
+mean(mtcars$mpg)
+
+# Median - middle value when data is ordered
+median(mtcars$mpg)
+
+# Standard deviation - measure of variability
+sd(mtcars$mpg)
+
+# Minimum and maximum values
+min(mtcars$mpg)
+max(mtcars$mpg)
+
+# Range - difference between max and min
+range(mtcars$mpg)  # This gives min and max
+max(mtcars$mpg) - min(mtcars$mpg)  # This gives the range as a single number
+```
+
+### Calculating Mode
+
+R doesn't have a built-in mode function, so we need to create one or use the `table()` function:
+
+```{r}
+# Find the mode using table() - most frequent value
+cyl_table <- table(mtcars$cyl)
+cyl_mode <- as.numeric(names(cyl_table)[cyl_table == max(cyl_table)])
+cyl_mode
+
+# Alternative: Create a mode function
+get_mode <- function(x) {
+  freq_table <- table(x)
+  mode_value <- names(freq_table)[freq_table == max(freq_table)]
+  return(as.numeric(mode_value))
+}
+
+# Test our function
+get_mode(mtcars$cyl)  # Number of cylinders should have a clear mode
+```
+
+### Creating a Table of Descriptive Statistics
+
+Let's create a table with all descriptive statistics for multiple variables:
+
+```{r}
+# Function to calculate all statistics for a variable
+calc_stats <- function(x, var_name) {
+  mean_val <- round(mean(x, na.rm = TRUE), 2)
+  median_val <- round(median(x, na.rm = TRUE), 2)
+  sd_val <- round(sd(x, na.rm = TRUE), 2)
+  min_val <- round(min(x, na.rm = TRUE), 2)
+  max_val <- round(max(x, na.rm = TRUE), 2)
+
+  return(data.frame(
+    Variable = var_name,
+    Mean = mean_val,
+    Median = median_val,
+    SD = sd_val,
+    Min = min_val,
+    Max = max_val
+  ))
+}
+
+# Calculate statistics for multiple variables
+stats_mpg <- calc_stats(mtcars$mpg, "MPG")
+stats_hp <- calc_stats(mtcars$hp, "Horsepower")
+stats_wt <- calc_stats(mtcars$wt, "Weight")
+stats_cyl <- calc_stats(mtcars$cyl, "Cylinders")
+
+# Combine into one table
+descriptive_table <- rbind(stats_mpg, stats_hp, stats_wt, stats_cyl)
+print(descriptive_table)
+```
+
+### Using Built-in Summary Functions
+
+R also provides convenient summary functions:
+
+```{r}
+# Summary function gives quartiles and mean
+summary(mtcars$mpg)
+
+# For multiple variables at once
+summary(mtcars[c("mpg", "hp", "wt", "cyl")])
+```
+
+## Identifying Skewness
+
+Skewness describes the asymmetry of a distribution.
+You can identify skewed variables by comparing the mean and median:
+
+```{r}
+# Compare mean and median for different variables
+variables_to_check <- c("mpg", "hp", "wt", "qsec")
+
+for (var in variables_to_check) {
+  var_mean <- round(mean(mtcars[[var]]), 2)
+  var_median <- round(median(mtcars[[var]]), 2)
+  difference <- round(var_mean - var_median, 2)
+
+  cat("Variable:", var, "\n")
+  cat("Mean:", var_mean, "| Median:", var_median, "| Difference:", difference, "\n")
+
+  if (abs(difference) > 0.5) {
+    if (difference > 0) {
+      cat("This variable appears RIGHT SKEWED (mean > median)\n")
+    } else {
+      cat("This variable appears LEFT SKEWED (mean < median)\n")
+    }
+  } else {
+    cat("This variable appears roughly SYMMETRIC\n")
+  }
+  cat("\n")
+}
+```
+
+When mean > median, the distribution is right-skewed (has a long tail extending to the right). When mean < median, the distribution is left-skewed.
+
+## Creating Histograms
+
+Histograms show the distribution of continuous variables.
+
+### Basic Histogram
+
+```{r}
+# Basic histogram
+hist(mtcars$mpg,
+     main = "Distribution of Miles Per Gallon",
+     xlab = "Miles Per Gallon (mpg)",
+     ylab = "Frequency",
+     col = "hot pink",
+     border = "black")
+```
+
+### Customized Histogram with Better Formatting
+
+```{r}
+# Fancy histogram
+hist(mtcars$mpg,
+     main = "Distribution of Fuel Efficiency in Motor Trend Cars",
+     xlab = "Miles Per Gallon (mpg)",
+     ylab = "Number of Cars",
+     col = "#CFB87C", # CU Gold
+     border = "#565A5C", # CU Dark Gray
+     breaks = 8,  # Control number of bins
+     las = 1)     # Horizontal y-axis labels
+
+# Add a vertical line for the mean
+abline(v = mean(mtcars$mpg), col = "black", lwd = 2, lty = 2)
+legend(
+  "topright",
+  legend = paste("Mean =", round(mean(mtcars$mpg), 1)),
+  lty = 2,
+  lwd = 2
+)
+```
+
+### Analyzing Distribution Shape
+
+```{r}
+# Create histogram and analyze shape
+hist(mtcars$hp,
+     main = "Distribution of Horsepower",
+     xlab = "Horsepower (hp)",
+     ylab = "Frequency",
+     col = "lightcoral",
+     border = "darkred",
+     breaks = 10)
+
+# Add mean and median lines
+abline(v = mean(mtcars$hp), col = "blue", lwd = 2, lty = 1)
+abline(v = median(mtcars$hp), col = "green", lwd = 2, lty = 2)
+legend("topright",
+       legend = c(paste("Mean =", round(mean(mtcars$hp), 1)),
+                  paste("Median =", round(median(mtcars$hp), 1))),
+       col = c("blue", "green"),
+       lty = c(1, 2),
+       lwd = 2)
+```
+
+## Creating Boxplots
+
+Boxplots show the distribution's five-number summary and help identify outliers:
+
+### Basic Boxplot
+
+```{r}
+# Basic boxplot
+boxplot(mtcars$mpg,
+        main = "Distribution of Miles Per Gallon",
+        ylab = "Miles Per Gallon (mpg)",
+        col = "#CFB87C",
+        border = "black")
+```
+
+### Identifying Outliers
+
+```{r}
+# Identify outliers using the IQR method
+Q1 <- quantile(mtcars$mpg, 0.25)
+Q3 <- quantile(mtcars$mpg, 0.75)
+IQR_mpg <- Q3 - Q1
+
+# Calculate outlier boundaries
+lower_bound <- Q1 - 1.5 * IQR_mpg
+upper_bound <- Q3 + 1.5 * IQR_mpg
+
+# Find outliers
+outliers <- mtcars$mpg[mtcars$mpg < lower_bound | mtcars$mpg > upper_bound]
+
+cat("Outlier boundaries: [", round(lower_bound, 2), ",", round(upper_bound, 2), "]\n")
+cat("Outliers found:", outliers, "\n")
+cat("Number of outliers:", length(outliers), "\n")
+```
+
+## Creating Bar Plots for Categorical Data
+
+For categorical variables, use bar plots instead of histograms:
+
+### Bar Plot for Categorical Data
+
+```{r}
+# Create a frequency table first
+cyl_freq <- table(mtcars$cyl)
+cyl_freq
+
+# Create bar plot
+barplot(cyl_freq,
+        main = "Distribution of Engine Cylinders",
+        xlab = "Number of Cylinders",
+        ylab = "Number of Cars",
+        col = c("coral", "lightgreen", "skyblue"),
+        border = "black")
+```
+
+### Horizontal Bar Plot
+
+```{r}
+# Horizontal bar plot
+barplot(cyl_freq,
+        main = "Engine Cylinder Distribution",
+        xlab = "Number of Cars",
+        ylab = "Number of Cylinders",
+        col = "orange",
+        horiz = TRUE,
+        las = 1)
+```
+
+## Manual Calculations (Sort of)
+
+Sometimes you need to calculate statistics the hard way to understand the formulas.
+Let's practice with a small dataset:
+
+```{r}
+# Small dataset for manual calculation practice
+values <- c(4, 10, 9, 13, 7)
+values
+
+# Calculate mean manually
+mean_manual <- sum(values) / length(values)
+cat("Manual mean calculation:", mean_manual, "\n")
+cat("R mean function:", mean(values), "\n")
+
+# Calculate median manually
+sorted_values <- sort(values)
+n <- length(values)
+if (n %% 2 == 1) {
+  median_manual <- sorted_values[(n + 1) / 2]
+} else {
+  median_manual <- (sorted_values[n/2] + sorted_values[n/2 + 1]) / 2
+}
+cat("Manual median calculation:", median_manual, "\n")
+cat("R median function:", median(values), "\n")
+
+# Calculate standard deviation manually
+mean_val <- mean(values)
+squared_deviations <- (values - mean_val)^2
+variance_manual <- sum(squared_deviations) / (length(values) - 1)  # Sample variance
+sd_manual <- sqrt(variance_manual)
+cat("Manual SD calculation:", round(sd_manual, 4), "\n")
+cat("R sd function:", round(sd(values), 4), "\n")
+```
+
+### Influence of Outliers
+
+```{r}
+# Add an outlier and see the effect
+values_with_outlier <- c(4, 10, 9, 13, 7, 138)
+
+# Compare statistics
+cat("Original data: 4, 10, 9, 13, 7\n")
+cat("Mean:", round(mean(values), 2), "| Median:", median(values), "| SD:", round(sd(values), 2), "\n\n")
+
+cat("With outlier: 4, 10, 9, 13, 7, 138\n")
+cat("Mean:", round(mean(values_with_outlier), 2), "| Median:", median(values_with_outlier), "| SD:", round(sd(values_with_outlier), 2), "\n\n")
+
+cat("The outlier dramatically affects the mean and standard deviation.\n")
+```
+
+## Key Points to Remember
+
+- **Use `mean()` for averages** - add `na.rm = TRUE` if data has missing values
+- **Filter data using logical indexing**: `data$variable[data$group == "value"]`
+- **Compare mean and median** to identify skewed distributions
+- **Use histograms for continuous data**, bar plots for categorical data
+- **The standard deviation measures variability** - larger values indicate more spread
+- **Outliers strongly affect mean and SD** but have little effect on median
+- **Always add titles and axis labels** to make graphs interpretable
+- **Round results appropriately** for professional presentation

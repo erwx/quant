@@ -2,6 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://erwx.github.io/quant/index.html</loc>
-    <lastmod>2025-08-31T15:22:52.109Z</lastmod>
+    <lastmod>2025-09-04T15:16:23.481Z</lastmod>
+  </url>
+  <url>
+    <loc>https://erwx.github.io/quant/pset_01.html</loc>
+    <lastmod>2025-09-04T21:37:41.068Z</lastmod>
+  </url>
+  <url>
+    <loc>https://erwx.github.io/quant/lab_01.html</loc>
+    <lastmod>2025-09-02T18:25:13.417Z</lastmod>
+  </url>
+  <url>
+    <loc>https://erwx.github.io/quant/lab_02.html</loc>
+    <lastmod>2025-09-02T18:25:13.417Z</lastmod>
   </url>
 </urlset>

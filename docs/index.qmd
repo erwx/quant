@@ -8,8 +8,14 @@ title: ""
 
 [Lab 2](lab_02.qmd)
 
-### Resources
+### Problem Sets
 
-[Textbook](colardarcicobb4th.pdf)
+[PSET 1 Practice](pset_01.qmd)
+
+### Textbook
+
+[Fundamentals of Statistical Reasoning in Education 4th Edition](colardarcicobb4th.pdf)
+
+### Resources
 
 [The Book of R](bookofr.pdf)
