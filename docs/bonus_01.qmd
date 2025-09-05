@@ -1,0 +1,604 @@
+---
+title: "Working with Files and Directories in R"
+author: "Erik Whitfield"
+date: "`r Sys.Date()`"
+format:
+  html:
+    theme: solar
+    toc: true
+    self-contained: true
+---
+
+## Introduction
+
+One of the most common frustrations for new R users is the "Error: cannot open the connection" or "No such file or directory" message. These errors almost always mean that R can't find your data file. Learning how to manage files and directories is very important for data analysis. After all, you can't analyze data that R can't find.
+
+In this lesson, you'll learn some basic skills for working with files in R. We'll start with the basics of how computers organize files, then move on to reading CSV and Excel files.
+
+Don't worry if this seems technical at first.
+We'll take it step by step and focus on practical, simple approaches that work reliably.
+
+## Understanding Files and Folders on Your Computer
+
+Before we jump into R, let's make sure we understand how your computer organizes information.
+
+### What Are Files and Folders?
+
+Think of your computer like a giant filing cabinet:
+- **Files** are like individual documents (your data, photos, etc.)
+- **Folders** (also called directories) are like file folders that organize related files
+- **File paths** are like the address that tells you exactly where a file lives
+
+### File Extensions Tell You What Kind of File You Have
+
+The letters after the dot in a filename tell you what type of file it is:
+- `.csv` - Comma Separated Values (spreadsheet data in a simple format)
+- `.xlsx` - Excel spreadsheet file
+- `.txt` - Plain text file
+- `.R` - R script file
+- `.qmd` - Quarto markdown file
+- `.dta` - Stata file
+
+For data analysis, you'll most commonly work with `.csv` and `.xlsx` files.
+
+### Where Do Files Live?
+
+On your computer, files are stored in a hierarchical structure. Common locations include:
+- **Desktop** - Files you can see on your desktop
+- **Documents** - Your main documents folder
+- **Downloads** - Where files from the internet usually go
+- **OneDrive/Google Drive** - Cloud storage folders
+
+## Working with Directories (Any R Environment)
+
+### What Is a Working Directory?
+
+R's working directory is like its "home base"—the folder where R automatically looks for files and saves new files. Think of it as R's current location on your computer.
+
+When you tell R to read a file called "pset1.csv", R looks for that file in its working directory. If the file is somewhere else, R gets confused and gives you an error.
+
+### Finding Where R Is Currently Looking
+
+Use the `getwd()` function (get working directory) to see where R is currently "sitting":
+
+```{r eval=FALSE}
+# See R's current working directory
+getwd()
+```
+
+This shows you the full path to R's current location. The output will look different depending on your operating system:
+- **Windows**: Something like "C:/Users/YourName/Documents"
+- **Mac/Linux**: Something like "/Users/YourName/Documents"
+
+### Seeing What Files R Can Find
+
+Use `list.files()` to see all the files in R's current working directory:
+
+```{r eval=FALSE}
+# List all files in the current directory
+list.files()
+
+# List only CSV files
+list.files(pattern = ".csv")
+
+# List only Excel files
+list.files(pattern = ".xlsx")
+```
+
+This is incredibly useful for checking whether your data file is where R expects it to be.
+
+### The Simple Approach: Keep Everything Together
+
+The easiest way to avoid file path problems is to put your data files in the same folder as your R script. Here's the simple workflow:
+
+1. Create a new folder for your project (e.g., "My_Analysis")
+2. Put your R script in that folder
+3. Put your data files (pset1.csv, pset1.xlsx) in the same folder
+4. Open your R script from that folder
+
+When everything is in the same place, you can simply use the filename without worrying about complex paths.
+
+## File Paths Made Simple
+
+### Understanding File Paths
+
+A file path is like a mailing address for your file. It tells the computer exactly where to find something.
+
+There are two types of file paths:
+
+**Absolute paths** give the complete address from the very top of your computer:
+- Windows: `"C:/Users/Hamlet/Documents/My_Project/pset1.csv"`
+- Mac/Linux: `"/Users/Hamlet/Documents/My_Project/pset1.csv"`
+
+**Relative paths** give directions from where you currently are:
+- `"pset1.csv"` (file is in the same folder as your script)
+- `"data/pset1.csv"` (file is in a subfolder called "data")
+
+### Operating System Differences
+
+**Windows** traditionally uses backslashes (`\`) in file paths, but R prefers forward slashes (`/`). R is (usually) smart enough to handle this, so always use forward slashes in your R code:
+
+```{r eval=FALSE}
+# Good - works on all systems
+data <- read.csv("pset1.csv")
+
+# Also good - explicit path with forward slashes
+data <- read.csv("C:/Users/Hamlet/Documents/pset1.csv")
+```
+
+### Quotation Marks Are Essential
+
+Always put file names and paths in quotation marks. R treats text in quotes as literal filenames:
+
+```{r eval=FALSE}
+# Correct - filename in quotes
+data <- read.csv("pset1.csv")
+
+# Wrong - R thinks pset1 is a variable name
+data <- read.csv(pset1.csv)
+```
+
+## Reading CSV Files (The Easy Way)
+
+### What Are CSV Files?
+
+CSV stands for "Comma Separated Values." It's a simple way to store spreadsheet-like data where:
+- Each row is a separate line
+- Columns are separated by commas
+- The first row usually contains column names
+
+CSV files are great because they're simple, small, and work with almost any software.
+
+### The Basic Command
+
+The `read.csv()` function is built into R.
+Here's the simplest way to read a CSV file:
+
+```{r eval=FALSE}
+# If your CSV file is in the same folder as your R script
+data <- read.csv("pset1.csv")
+
+# If your CSV file is in a subfolder called "data"
+data <- read.csv("data/pset1.csv")
+
+# Look at the first few rows
+head(data)
+
+# Check the structure
+str(data)
+```
+
+### Essential Arguments for read.csv()
+
+The `read.csv()` function has several helpful arguments:
+
+```{r eval=FALSE}
+# Basic read with common options
+data <- read.csv("data/pset1.csv",
+                 header = TRUE,           # First row contains column names
+                 stringsAsFactors = FALSE) # Keep text as text, not factors
+
+# If your CSV uses semicolons instead of commas
+data <- read.csv("data/pset1.csv", sep = ";")
+
+# If missing values are coded as something other than blank
+data <- read.csv("data/pset1.csv", na.strings = c("", "NA", "missing", "999"))
+```
+
+**Important arguments explained:**
+- `header = TRUE`: Tells R the first row contains column names (this is usually what you want)
+- `stringsAsFactors = FALSE`: Keeps text columns as regular text instead of converting them to factors
+- `sep = ";"`: Changes the separator if your file uses semicolons instead of commas
+- `na.strings`: Tells R which values should be treated as missing data
+
+### Checking Your Data Loaded Correctly
+
+Always check your data after loading it:
+
+```{r eval=FALSE}
+# Load the data
+data <- read.csv("data/pset1.csv")
+
+# Quick checks
+head(data)        # See first 6 rows
+tail(data)        # See last 6 rows
+str(data)         # See structure and data types
+names(data)       # See column names
+nrow(data)        # Number of rows
+ncol(data)        # Number of columns
+dim(data)         # Both dimensions at once
+```
+
+### Common Problems and Fixes
+
+**Problem: "Error: cannot open the connection"**
+- **Solution**: The file isn't where R is looking. Check `getwd()` and `list.files()`
+
+**Problem: Column names are weird (X1, X2, X3)**
+- **Solution**: Your CSV probably doesn't have headers. Use `header = FALSE`
+
+**Problem: Numbers are being read as text**
+- **Solution**: You might have non-numeric characters. Check for symbols like "$" or "," in your numbers
+
+**Problem: Text looks garbled with strange characters**
+- **Solution**: Encoding issue. Try `read.csv("pset1.csv", encoding = "UTF-8")`
+
+## Reading Excel Files (When You Need To)
+
+### Why Excel Is Trickier Than CSV
+
+Excel files are more complex than CSV files because they can contain:
+- Multiple sheets
+- Formatting (colors, fonts, etc.)
+- Formulas
+- Merged cells
+- Charts and images
+
+This complexity can sometimes cause problems when reading data into R.
+
+### Installing the readxl Package
+
+Unlike CSV files, you need a special package to read Excel files.
+The `readxl` package is a reliable option:
+
+```{r eval=FALSE}
+# Install the package (only need to do this once)
+install.packages("readxl")
+
+# Load the package (need to do this each R session)
+library(readxl)
+```
+
+### Basic Excel Reading
+
+Once you have the `readxl` package loaded, reading Excel files is similar to reading CSV files:
+
+```{r eval=FALSE}
+# Load the readxl package
+library(readxl)
+
+# If Excel file is in the same folder as your script
+data <- read_excel("pset1.xlsx")
+
+# If Excel file is in a subfolder called "data"
+data <- read_excel("data/pset1.xlsx")
+
+# Check the data
+head(data)
+str(data)
+```
+
+### Working with Multiple Sheets
+
+Excel files often have multiple sheets. Here's how to handle them:
+
+```{r eval=FALSE}
+# See what sheets are available
+excel_sheets("data/pset1.xlsx")
+
+# Read a specific sheet by name
+data <- read_excel("data/pset1.xlsx", sheet = "PSET 1 Data")
+
+# Read a specific sheet by number (Sheet 1 = 1, Sheet 2 = 2, etc.)
+data <- read_excel("data/pset1.xlsx", sheet = 1)
+
+# Read data starting from a specific row (skip headers or notes)
+data <- read_excel("data/pset1.xlsx", skip = 2)
+```
+
+### Handling Excel Quirks
+
+Excel files can have formatting issues. Here are common solutions:
+
+```{r eval=FALSE}
+# Skip empty rows and columns
+data <- read_excel("data/pset1.xlsx", skip_empty_rows = TRUE)
+
+# Specify which columns to read (useful if there are extra columns)
+data <- read_excel("data/pset1.xlsx", range = "A1:E100")
+
+# Handle different data types
+data <- read_excel("data/pset1.xlsx",
+                   col_types = c("text", "numeric", "date", "numeric"))
+```
+
+### When to Convert Excel to CSV Instead
+
+Sometimes it's easier to save your Excel file as a CSV first:
+
+1. Open your Excel file
+2. Go to File > Save As
+3. Choose "CSV (Comma delimited)" as the file type
+4. Save with a new name (e.g., "pset1.csv")
+5. Use `read.csv()` instead
+
+This approach avoids many Excel-specific problems and makes your code simpler.
+
+## Working in RStudio (Bonus Section)
+
+If you're using RStudio (the most popular way to use R), you have some extra tools that make file management easier.
+
+### The Files Pane
+
+In RStudio, look for the "Files" tab in the bottom-right panel. This is like a file explorer built into RStudio. You can:
+
+- See all files in your current directory
+- Click on folders to navigate
+- Click on data files to preview them
+- Upload files from your computer
+
+### Setting Your Working Directory the Easy Way
+
+In RStudio, you can set your working directory using the menus instead of typing commands:
+
+1. Go to **Session > Set Working Directory > Choose Directory**
+2. Navigate to the folder containing your data files
+3. Click "Select Folder" or "Open"
+
+RStudio will run the `setwd()` command for you.
+
+### The Upload Button
+
+If you're using RStudio Cloud or RStudio Server, you can upload files directly:
+
+1. In the Files pane, click the "Upload" button
+2. Choose your files from your computer
+3. Click "OK" to upload them to your current directory
+
+### Using the Files Pane to Build File Paths
+
+You can use the Files pane to help build file paths:
+
+1. Navigate to your file in the Files pane
+2. Click on the file
+3. Choose "Import Dataset" for CSV/Excel files
+4. RStudio will show you the code needed to read the file
+
+## Simple File Organization for Beginners
+
+### The One-Folder Approach
+
+When you're starting out, keep it simple:
+
+```
+My_Analysis/
+├── my_script.R
+├── pset1.csv
+└── pset1.xlsx
+```
+
+Everything in one folder means you can use simple filenames without complex paths.
+
+### Basic Folder Structure (When You're Ready)
+
+As you get more comfortable, you might want a bit more organization:
+
+```
+My_Analysis/
+├── lab_01.qmd
+├── lab_02.qmd
+├── pset_01.qmd
+├── data/
+│   ├── pset1.csv
+│   └── pset1.xlsx
+└── _site/
+    └── (rendered HTML files)
+```
+
+With this structure, you'd read files like this:
+
+```{r eval=FALSE}
+# Read files from the data folder
+data <- read.csv("data/pset1.csv")
+excel_data <- read_excel("data/pset1.xlsx")
+```
+
+### Naming Conventions
+
+Use clear, simple names for your files and folders:
+
+- **Good**: `survey_data.csv`, `analysis_script.R`, `final_report.qmd`
+- **Avoid**: `data file (final version) - copy.csv`, `Script #1.R`
+
+**Rules of thumb:**
+- No spaces (use underscores or dashes instead)
+- No special characters (avoid !, @, #, etc.)
+- Use descriptive names
+- Be consistent
+
+## Hands-On Practice
+
+Let's practice with some real examples. For these exercises, create a folder on your computer called "R_Practice" and put some data files in it.
+
+### Exercise 1: Download and Read a CSV File
+
+1. Create a folder called "R_Practice"
+2. Download some course data files and save them in that folder
+3. Open R and set your working directory to that folder
+4. Try reading the file:
+
+```{r eval=FALSE}
+# Check where R is looking
+getwd()
+
+# See what files are available
+list.files()
+
+# Read the CSV file
+my_data <- read.csv("pset1.csv") # obviously, use the actual name of *your* file
+
+# Check that it worked
+head(my_data)
+str(my_data)
+```
+
+### Exercise 2: Practice with File Paths
+
+Try these commands to understand how file paths work:
+
+```{r eval=FALSE}
+# See your current location
+getwd()
+
+# List all files in the current directory
+list.files()
+
+# List only CSV files
+list.files(pattern = "\\.csv$")
+
+# Get information about your data file
+file.info("pset1.csv")
+```
+
+### Exercise 3: Read an Excel File
+
+1. Install and load the readxl package
+2. Make sure the Excel file "pset1.xlsx" is in your R_Practice folder
+3. Try reading it:
+
+```{r eval=FALSE}
+# Install package (if needed)
+# install.packages("readxl")
+
+# Load package
+library(readxl)
+
+# Check what sheets are available
+excel_sheets("pset1.xlsx")
+
+# Read the Excel file
+excel_data <- read_excel("pset1.xlsx")
+
+# Check the results
+head(excel_data)
+```
+
+### Troubleshooting Walkthrough
+
+Let's practice fixing common errors:
+
+**Error Message**: "Error: `path` does not exist: 'pset1.csv'"
+
+**Debugging steps**:
+```{r eval=FALSE}
+# Step 1: Check where R is looking
+getwd()
+
+# Step 2: See what files R can find
+list.files()
+
+# Step 3: Look for your file specifically
+list.files(pattern = "csv")
+
+# Step 4: If the file isn't there, either:
+# - Move the file to the current directory, or
+# - Change R's working directory to where the file is
+```
+
+## Common Problems and Simple Solutions
+
+### "Error: cannot open the connection"
+
+This is the most common file-reading error. Here's how to fix it:
+
+**Check 1: Is the file where R is looking?**
+```{r eval=FALSE}
+getwd()          # Where is R looking?
+list.files()     # What files can R see?
+```
+
+**Check 2: Is the filename spelled correctly?**
+- Check for typos
+- Check the file extension (.csv vs .xlsx)
+- Remember that R is case-sensitive ("pset1.csv" vs "PSET1.csv")
+
+**Check 3: Are you using the right slashes?**
+```{r eval=FALSE}
+# Good
+data <- read.csv("pset1.csv")
+
+# Also good - with subfolder
+data <- read.csv("data/pset1.csv")
+
+# Also good - full path
+data <- read.csv("C:/Users/Hamlet/Documents/R_Practice/pset1.csv")
+```
+
+### "No such file or directory"
+
+This means R can't find your file. Solutions:
+
+1. **Put the file in R's working directory** (use `getwd()` to find it)
+2. **Use the full file path** (copy the complete address to your file)
+3. **Change R's working directory** to where your file is located
+
+### Data Looks Weird After Loading
+
+**Problem**: Numbers show up as text, or you see strange characters
+
+**Solutions**:
+```{r eval=FALSE}
+# For encoding problems (strange characters)
+data <- read.csv("data/pset1.csv", encoding = "UTF-8")
+
+# For files that use semicolons instead of commas
+data <- read.csv("data/pset1.csv", sep = ";")
+
+# For files without headers
+data <- read.csv("data/pset1.csv", header = FALSE)
+
+# For different missing value codes
+data <- read.csv("data/pset1.csv", na.strings = c("", "NA", "-", "999"))
+```
+
+### "Object Not Found" Error
+
+**Error**: "Error: object 'my_data' not found"
+
+**Problem**: You forgot to assign your data to a variable
+
+**Solution**:
+```{r eval=FALSE}
+# Wrong - just prints the data but doesn't save it
+read.csv("pset1.csv")
+
+# Right - saves the data to a variable
+my_data <- read.csv("pset1.csv")
+```
+
+## Key Takeaways and Best Practices
+
+### Start Simple
+
+When you're learning:
+- Keep all files in one folder
+- Use simple, clear filenames
+- Check your data after every import
+
+### Essential Commands to Remember
+
+```{r eval=FALSE}
+# File management basics
+getwd()                   # Where am I?
+list.files()              # What files can R see?
+setwd("path/to/folder")   # Change location (if needed)
+
+# Reading data
+data <- read.csv("pset1.csv")          # Read CSV
+data <- read.csv("data/pset1.csv")     # Read CSV from subfolder
+data <- read_excel("data/pset1.xlsx")  # Read Excel (needs readxl package)
+
+# Quick data checks
+head(data)      # First few rows
+str(data)       # Structure and data types
+names(data)     # Column names
+```
+
+### When in Doubt
+
+If you're having file problems:
+
+1. **Put everything in the same folder** - your R script and your data files
+2. **Use `getwd()` and `list.files()`** to see what R can find
+3. **Check your spelling** - filenames must be exact
+4. **Use forward slashes** in file paths, even on Windows

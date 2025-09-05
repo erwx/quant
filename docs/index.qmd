@@ -12,6 +12,10 @@ title: ""
 
 [PSET 1 Practice](pset_01.qmd)
 
+### Extras
+
+[Working with Files and Directories](bonus_01.qmd)
+
 ### Textbook
 
 [Fundamentals of Statistical Reasoning in Education 4th Edition](colardarcicobb4th.pdf)
